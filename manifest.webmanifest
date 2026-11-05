@@ -1,0 +1,32 @@
+{
+  "id": "./",
+  "name": "Tàu điện thông tin — Ga trí nhớ 3D",
+  "short_name": "Tàu trí nhớ",
+  "description": "Học và ghi nhớ thông tin bằng hành trình tàu điện 3D",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#08111f",
+  "theme_color": "#08111f",
+  "lang": "vi",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
