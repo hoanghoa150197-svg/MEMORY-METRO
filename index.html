@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Tàu điện thông tin · Ghi nhớ bằng hành trình</title>
+<meta name="theme-color" content="#08111f"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Tàu trí nhớ">
+<link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="./icon.svg">
+<meta name="theme-color" content="#08111f"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Tàu trí nhớ">
+<link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="./icon.svg">
+<meta name="theme-color" content="#08111f"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Tàu trí nhớ">
+<link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="./icon.svg">
+<meta name="theme-color" content="#08111f"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Tàu trí nhớ">
+<link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="./icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{font-family:'Be Vietnam Pro',system-ui,sans-serif;color:#e8f0ff;background:#08111f;--panel:#111e30;--border:#253853;--sub:#94a7bf;--accent:#55dfbf;--blue:#70aaff}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 60% -15%,#163a58 0%,transparent 52%),#08111f}button,input,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.4;cursor:not-allowed}.app{max-width:1490px;margin:auto;padding:22px clamp(14px,2.6vw,38px) 40px}.top{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:25px}.brand{display:flex;gap:14px;align-items:center}.logo{width:52px;height:52px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(135deg,#49e9c0,#4b89ff);font-size:28px;box-shadow:0 9px 30px #31c9bc20}.brand h1{margin:0;font-size:clamp(21px,2.4vw,29px);letter-spacing:-.8px}.brand p{margin:5px 0 0;color:var(--sub);font-size:12px}.pill{border:1px solid #315470;border-radius:100px;padding:9px 13px;color:#a6e6d5;font-size:12px;white-space:nowrap;background:#10283a}.layout{display:grid;grid-template-columns:370px minmax(0,1fr);gap:20px}.panel{background:linear-gradient(145deg,#152239e6,#0d1a2aec);border:1px solid var(--border);border-radius:20px;padding:20px;box-shadow:0 14px 35px #0002}.panel h2{margin:0 0 7px;font-size:17px}.hint{color:var(--sub);font-size:12px;line-height:1.7;margin:0 0 17px}.sectionline{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:0 0 12px}.sectionline strong{font-size:12px}.small{font-size:11px;color:var(--sub)}.upload{width:100%;display:flex;align-items:center;gap:12px;text-align:left;padding:15px;background:#172b40;border:1.5px dashed #468a9c;border-radius:13px;color:#dff9f5}.upload:hover{background:#1b3449}.upload span:first-child{font-size:27px}.upload small{display:block;margin-top:3px;color:#a1b5c6}.upload input{display:none}.example{border:0;background:transparent;color:#7ddacb;text-decoration:underline;font-size:12px;margin:9px 0 17px;padding:3px}.search{width:100%;border:1px solid #36506b;border-radius:10px;background:#0e1a2b;padding:11px 13px;color:white;outline:none}.search:focus{border-color:#64ddcd}.actionsline{display:flex;gap:8px;align-items:center;margin:13px 0}.mini{padding:7px 9px;border-radius:8px;background:#203248;border:1px solid #36506b;color:#d3e5f5;font-size:11px}.entries{height:clamp(220px,35vh,410px);overflow-y:auto;border:1px solid #293e55;border-radius:12px;background:#0a1727}.entry{display:flex;align-items:flex-start;gap:10px;padding:12px;border-bottom:1px solid #1b3046;cursor:pointer}.entry:last-child{border-bottom:none}.entry:hover{background:#142b40}.entry input{margin-top:3px;accent-color:#51e6b9;width:16px;height:16px}.entry strong{display:block;font-size:12px;line-height:1.5}.entry small{display:block;color:#93a8bb;margin-top:4px;line-height:1.5;font-size:11px}.empty{padding:27px 15px;color:#93a8bb;font-size:12px;text-align:center;line-height:1.8}.settings{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0 17px}.setting label{display:block;margin-bottom:7px;color:#c9d6e8;font-size:11px}.setting select{width:100%;background:#0e1a2b;border:1px solid #39506b;color:#fff;border-radius:9px;padding:10px}.button{border:0;border-radius:12px;padding:13px 18px;font-weight:700;font-size:13px;display:inline-flex;align-items:center;justify-content:center;gap:7px}.primary{background:linear-gradient(100deg,#43e3b9,#68bdfa);color:#05202f;box-shadow:0 8px 23px #3ad6b424}.secondary{background:#1c344b;color:#d8e9f7;border:1px solid #365470}.wide{width:100%}.stagepanel{overflow:hidden;padding:0;min-height:660px;display:flex;flex-direction:column}.stationtop{padding:21px 23px 9px;display:flex;justify-content:space-between;gap:12px;align-items:center}.stationtop h2{margin:0;font-size:18px}.stationtop p{font-size:12px;color:var(--sub);margin:5px 0}.stationid{font-size:12px;padding:8px 11px;color:#a8e4dc;border:1px solid #2c5c66;border-radius:8px}.scene{position:relative;min-height:410px;height:min(56vh,560px);overflow:hidden;background:linear-gradient(180deg,#101d30,#142b3e 58%,#111d2d);isolation:isolate}.scene:before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:repeating-linear-gradient(90deg,transparent 0 126px,#7f9ab313 127px 129px,transparent 130px 254px),linear-gradient(180deg,#0b1c35aa 0%,transparent 45%)}#canvas{display:block;width:100%;height:100%;position:relative;z-index:1}.sceneLabel{position:absolute;top:17px;left:20px;z-index:5;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#badce5;background:#082033c9;border:1px solid #32566c;padding:8px 12px;border-radius:8px}.question{position:absolute;left:50%;top:49%;transform:translate(-50%,-50%) scale(.95);z-index:6;width:min(55%,420px);min-height:112px;border-radius:15px;border:1px solid #a1e6f29c;background:linear-gradient(145deg,#08273ef2,#0a192ce8);padding:17px 18px;box-shadow:0 13px 55px #0009,0 0 35px #5cf9df30;text-align:center;opacity:0;pointer-events:none;transition:opacity .45s,transform .45s}.question.visible{opacity:1;transform:translate(-50%,-50%) scale(1)}.question .eyebrow{font-size:10px;letter-spacing:1.3px;text-transform:uppercase;color:#8ce5d5;margin-bottom:11px}.question .mainq{font-size:clamp(15px,2.4vw,28px);font-weight:800;line-height:1.45;overflow-wrap:anywhere}.question .prompt{font-size:11px;margin-top:11px;color:#b9d0e5}.countbadge{position:absolute;bottom:18px;left:19px;background:#081d2dd6;border:1px solid #39667b;border-radius:10px;color:#e9ffff;z-index:5;padding:10px 14px;font-size:12px}.countbadge strong{color:#6cefd4}.statusright{position:absolute;bottom:18px;right:19px;z-index:5;font-size:11px;padding:10px 12px;border-radius:8px;background:#091e2cc9;color:#b2d2e0}.studybar{padding:18px 22px;border-top:1px solid #273a52;display:flex;flex-wrap:wrap;align-items:center;gap:10px}.studybar .button{padding:11px 13px}.timer{margin-left:auto;display:flex;align-items:center;gap:12px}.timecircle{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(#65eac5 var(--percent,100%),#25384a 0);position:relative}.timecircle:after{content:"";position:absolute;inset:5px;background:#101d30;border-radius:50%}.timecircle b{z-index:1;font-size:15px}.timehint{font-size:11px;color:#b9cce0;max-width:95px;line-height:1.6}.answer{margin:0 22px 22px;border:1px solid #35556c;background:#102a3b;border-radius:13px;padding:17px;display:none}.answer.show{display:block}.answerhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}.answerhead strong{color:#8af1cc;font-size:12px}.answergrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.answergrid div{background:#122436;border-radius:8px;padding:12px}.answergrid small{display:block;color:#8cabc2;margin-bottom:6px;font-size:11px}.answergrid b{font-size:14px;line-height:1.7;font-weight:600;overflow-wrap:anywhere}.footer{font-size:11px;color:#7c92a7;line-height:1.7;margin:18px 0 0}.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#184239;border:1px solid #50ba9c;color:white;padding:12px 17px;border-radius:10px;font-size:12px;z-index:50;max-width:90vw;display:none}.toast.show{display:block}.muted{color:#91abc3}.checkopt{display:flex;align-items:center;gap:7px;font-size:11px;color:#b7cade;margin-bottom:13px}.checkopt input{accent-color:#55e5c8}.stat{color:#83e7cc;font-size:12px;font-weight:600}.kbd{font-family:monospace;color:#7fa7ba}.modeinfo{font-size:11px;color:#8da3b8;margin-left:auto}.scene .overlayerror{position:absolute;top:70px;left:12%;right:12%;z-index:10;color:#fff;text-align:center;background:#14283fe8;padding:16px;border-radius:12px;display:none;font-size:12px;line-height:1.7}@media(max-width:980px){.layout{grid-template-columns:1fr}.entries{height:220px}.scene{height:470px}.stagepanel{min-height:0}}@media(max-width:560px){.app{padding:15px 10px}.top{margin-bottom:17px}.brand p{font-size:10px}.pill{display:none}.panel{padding:15px;border-radius:15px}.stagepanel{padding:0}.stationtop{padding:16px}.scene{height:370px;min-height:370px}.question{width:65%;padding:10px;min-height:92px}.question .mainq{font-size:17px}.question .eyebrow{font-size:9px;margin-bottom:6px}.question .prompt{font-size:9px;margin-top:5px}.studybar{padding:12px;gap:7px}.studybar .button{padding:10px;font-size:11px}.timer{margin-left:0}.timehint{display:none}.timecircle{width:44px;height:44px}.answer{margin:0 12px 14px;padding:13px}.answergrid{grid-template-columns:1fr}.statusright{bottom:13px;right:12px}.countbadge{left:12px;bottom:13px}}
+
+/* Sunset metropolitan station redesign */
+:root{--accent:#5cf0d0;--blue:#8bbaff}
+body{background:radial-gradient(ellipse at 65% -15%,#304e7a 0%,transparent 55%),#08111f}
+.brand .logo{background:linear-gradient(135deg,#fd5267,#e9eef9);box-shadow:0 8px 34px #ef4f6977}
+.stagepanel{border-color:#4b6b89;background:#111e32}
+.stationtop{background:linear-gradient(100deg,#142d46,#17233e)}
+.stationid{color:#fff3e7;border-color:#b98070;background:#bd665020}
+.scene{background:linear-gradient(180deg,#5778bc,#ffb598 66%,#47576d);height:min(65vh,640px);min-height:450px}
+.scene:before{background:linear-gradient(180deg,#182b4b14 0%,transparent 55%,#0b1a2b44 100%)}
+.sceneLabel{background:#17283fc9;border-color:#d9eaff80;backdrop-filter:blur(7px);color:#f9faff;box-shadow:0 4px 24px #101d3855}
+.question{left:auto;right:2%;top:45%;transform:translateY(-50%) translateX(12px) scale(.96);width:min(49%,440px);max-height:70%;overflow-y:auto;min-height:180px;text-align:left;background:linear-gradient(145deg,#133758dc,#28315cdc);border:1px solid #a0e9ff;box-shadow:0 0 0 2px #34e7ff30,0 0 35px #00dfff63,0 20px 50px #1019318c;backdrop-filter:blur(17px);padding:14px;transition:opacity .5s,transform .5s}
+.question.visible{transform:translateY(-50%) translateX(0) scale(1)}
+.question:before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:linear-gradient(90deg,#20ef9b,#4da5ff,#be6af5)}
+.question .eyebrow{font-size:11px;color:#d7feec;letter-spacing:0;text-transform:none;margin:0 0 10px}
+.question .mainq{border-radius:11px;background:linear-gradient(135deg,#efffffee,#ddf4ffdd);color:#0e2737;font-size:clamp(17px,2.25vw,27px);padding:17px 12px;min-height:76px;display:grid;place-items:center;text-align:center;box-shadow:inset 0 0 0 1px #76ffdf}
+.question .prompt{line-height:1.65;color:#f0f9ff;text-align:center;font-size:11px}
+.learningColumns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin:0 0 8px}
+.learningColumns span{text-align:center;border-radius:8px 8px 0 0;padding:8px 2px;color:white;font-size:clamp(9px,1vw,12px);font-weight:700}
+.learningColumns span:nth-child(1){background:linear-gradient(125deg,#0da960,#11df98)}
+.learningColumns span:nth-child(2){background:linear-gradient(125deg,#3078cc,#4b9dfe)}
+.learningColumns span:nth-child(3){background:linear-gradient(125deg,#7c42bd,#bc72fd)}
+.learningTiles{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}
+.lockedTile{border:1px solid #85b7e17e;background:#315b8c76;min-height:61px;border-radius:10px;text-align:center;padding:9px 4px;font-size:19px;color:#e5f1ff}
+.lockedTile:last-child{background:#6d46956a}
+.question .prompt{margin-top:9px}
+.countbadge,.statusright{backdrop-filter:blur(6px);background:#14253bcf;border:1px solid #b2ddf877;color:white}
+.sceneCorner{position:absolute;right:18px;top:15px;z-index:3;font-size:10px;letter-spacing:.1em;color:#f5f8ff;background:#1d2a43ad;padding:9px 12px;border:1px solid #a8c5db7e;border-radius:10px;pointer-events:none}
+@media(max-width:560px){.scene{height:420px;min-height:420px}.question{right:2%;top:42%;width:58%;padding:9px;min-height:135px}.question .mainq{font-size:15px;min-height:60px;padding:8px}.question .eyebrow{font-size:9px}.lockedTile{min-height:43px;font-size:13px}.learningColumns span{font-size:9px}.sceneCorner{display:none}}
+
+/* One unified learning card: show only the information until reveal. */
+.question{min-height:0;max-height:80%;width:min(48%,420px);padding:18px;border-radius:18px;overflow-y:auto}
+.question .eyebrow{font-size:11px;margin:0 0 12px}
+.question .qLabel{display:inline-block;margin:0 0 9px;padding:6px 10px;border-radius:7px;background:#129c71;color:#fff;font-size:11px;font-weight:750;letter-spacing:.06em}
+.question .mainq{padding:18px 14px;min-height:80px;font-size:clamp(18px,2.15vw,27px);line-height:1.5}
+.inlineAnswer{display:none;margin-top:12px;gap:9px;animation:answerFade .38s ease both}
+.inlineAnswer.show{display:grid}
+.inlineAnswerItem{text-align:left;padding:12px 14px;border-radius:11px;background:#f2f8ff;color:#153047;border:1px solid #bcdff8;overflow-wrap:anywhere}
+.inlineAnswerItem:nth-child(2){background:#f6f1ff;border-color:#d9c7ff}
+.inlineAnswerItem span{display:block;color:#2369af;font-size:10px;letter-spacing:.09em;font-weight:800;margin-bottom:6px}
+.inlineAnswerItem:nth-child(2) span{color:#8152b4}
+.inlineAnswerItem b{display:block;font-size:clamp(13px,1.5vw,17px);font-weight:650;line-height:1.55;white-space:pre-wrap}
+@keyframes answerFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:560px){.question{width:61%;padding:10px;max-height:78%}.question .mainq{font-size:15px;min-height:62px;padding:11px 7px}.question .qLabel{font-size:9px;padding:5px 7px}.inlineAnswerItem{padding:8px}.inlineAnswerItem b{font-size:12px}.inlineAnswerItem span{font-size:9px}}
+</style><style>
+.roundOverlay{position:absolute;z-index:8;left:50%;top:48%;transform:translate(-50%,-45%) scale(.96);min-width:min(380px,85%);padding:27px 26px;border:1px solid #69d6ce;border-radius:22px;background:linear-gradient(145deg,#08243ef5,#102e3df2);box-shadow:0 22px 65px #0009,0 0 28px #47ecd443;text-align:center;display:flex;flex-direction:column;align-items:center;gap:11px;color:#f2fffe;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s}.roundOverlay.show{opacity:1;transform:translate(-50%,-50%) scale(1)}.roundIcon{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#20c99c;color:#07342b;font-size:28px;font-weight:900}.roundOverlay strong{font-size:clamp(18px,2.5vw,27px)}.roundOverlay span:not(.roundIcon){font-size:13px;line-height:1.7}.roundOverlay small{color:#99c6d0;font-size:11px}
+
+/* MEMORY CARD V2 — crisp information hierarchy, one card, responsive to mobile. */
+.question{right:2.3%;top:46%;width:min(46%,430px);max-height:85%;padding:0!important;min-height:0;overflow-x:hidden;overflow-y:auto;border-radius:21px;border:1px solid rgba(215,243,255,.8);background:linear-gradient(155deg,rgba(15,35,60,.96),rgba(18,49,73,.96));box-shadow:0 26px 65px #071426a8,0 0 0 5px #9cdfff16,0 1px 0 #e5fcff8c inset;backdrop-filter:blur(18px);scrollbar-width:thin;scrollbar-color:#789bac88 transparent}
+.question:before{height:4px;background:linear-gradient(90deg,#2aeab3 0%,#58b9ff 54%,#a989ff 100%)}
+.memoryCardTop{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:18px 19px 12px}
+.memoryLive{display:inline-flex;gap:7px;align-items:center;font-size:10px;letter-spacing:1.35px;font-weight:800;color:#b9fbe8}
+.memoryLive i{width:7px;height:7px;border-radius:100%;background:#4ef3b5;box-shadow:0 0 0 4px #4ef3b527,0 0 12px #4ef3b5}
+.memoryIndex{font-size:10px;letter-spacing:.8px;font-weight:800;color:#bfd3e7;border:1px solid #547089;background:#203a54;padding:6px 9px;border-radius:8px;white-space:nowrap}
+.memoryLead{display:flex;gap:10px;align-items:center;padding:0 19px 17px}
+.memoryLeadIcon{width:38px;height:38px;flex-shrink:0;display:grid;place-items:center;background:linear-gradient(140deg,#c4fff0,#6cbefb);color:#124060;border-radius:12px;font-size:26px;box-shadow:0 5px 18px #48d7ce3b}
+.memoryLeadTitle{font-weight:800;font-size:17px;line-height:1.4;color:#f7fbff}
+.memoryLeadSubtitle{font-size:11px;color:#adc8df;margin-top:2px;line-height:1.5}
+.memoryQuestion{margin:0 12px;border:1px solid #bce8fb;background:linear-gradient(150deg,#ffffff,#eaf7ff);border-radius:15px;padding:12px 13px 14px;box-shadow:0 10px 21px #0002}
+.memoryQuestionLabel{display:flex;gap:7px;align-items:center;color:#39779c;font-size:10px;font-weight:800;letter-spacing:.85px;margin-bottom:10px}
+.memoryLabelIcon{width:21px;height:21px;background:#d8efff;color:#2676a7;border-radius:6px;display:grid;place-items:center;font-size:13px;font-weight:900}
+.question .mainq{display:block;min-height:0;padding:5px 3px 8px;box-shadow:none;background:none;color:#122c44;font-size:clamp(19px,2.25vw,28px);line-height:1.38;font-weight:850;letter-spacing:-.4px;text-align:left;overflow-wrap:anywhere}
+.inlineAnswer{margin:11px 12px 0;gap:8px}
+.inlineAnswerItem,.inlineAnswerItem:nth-child(2){background:linear-gradient(145deg,#e9fff5,#f5fff9);border:1px solid #9ce9c8;padding:13px 14px;border-radius:12px;box-shadow:none}
+.inlineAnswerItem:nth-child(2){background:linear-gradient(145deg,#eef0ff,#f9f7ff);border-color:#c7cafa}
+.inlineAnswerItem span{display:flex;align-items:center;gap:7px;font-size:10px;letter-spacing:.8px;color:#13835e;margin-bottom:8px}
+.inlineAnswerItem:nth-child(2) span{color:#635eb0}
+.inlineAnswerItem .answerIcon{display:inline-grid;place-items:center;width:20px;height:20px;background:#c8f4de;border-radius:6px;color:#087b53;font-size:13px;margin:0;letter-spacing:0}
+.inlineAnswerItem .answerIcon.noteIcon{background:#e2e1ff;color:#6863b3}
+.inlineAnswerItem b{color:#1a3a46;font-size:clamp(13px,1.45vw,16px);line-height:1.65;font-weight:650}
+.inlineAnswerItem:nth-child(2) b{color:#31305d}
+.memoryFooter{padding:15px 19px 16px}
+.memoryFooterLine{display:flex;justify-content:space-between;gap:8px;align-items:center;font-size:11px;color:#aacbe0}
+.memoryFooterLine strong{font-size:13px;color:#d4fff0;font-variant-numeric:tabular-nums}
+.memoryTrack{height:5px;overflow:hidden;border-radius:99px;background:#33516d;margin-top:9px}
+#memoryTrackFill{height:100%;width:100%;border-radius:99px;background:linear-gradient(90deg,#30e5ab,#7dcbff);transition:width .3s linear}
+.memoryTip{margin-top:9px;color:#8faec6;font-size:10px;line-height:1.55}
+.question.has-answer .memoryTip{color:#8cf5c4}
+@media(max-width:980px){.question{width:min(48%,430px)}}
+@media(max-width:560px){.question{right:2%;top:44%;width:64%;max-height:85%;border-radius:15px}.memoryCardTop{padding:12px 11px 8px}.memoryLive{font-size:8px;letter-spacing:.65px}.memoryIndex{font-size:9px;padding:4px 6px}.memoryLead{padding:0 11px 11px;gap:7px}.memoryLeadIcon{width:27px;height:27px;border-radius:8px;font-size:19px}.memoryLeadTitle{font-size:12px}.memoryLeadSubtitle{font-size:9px}.memoryQuestion{margin:0 7px;padding:9px;border-radius:10px}.memoryQuestionLabel{font-size:8px;gap:5px;margin-bottom:6px;letter-spacing:.35px}.memoryLabelIcon{width:17px;height:17px;font-size:11px}.question .mainq{font-size:clamp(14px,4vw,19px);padding:3px 1px 5px;line-height:1.38}.inlineAnswer{margin:7px 7px 0;gap:6px}.inlineAnswerItem{padding:8px 9px}.inlineAnswerItem span{font-size:8px;margin-bottom:5px}.inlineAnswerItem b{font-size:11px;line-height:1.5}.memoryFooter{padding:10px 11px 12px}.memoryFooterLine{font-size:9px}.memoryFooterLine strong{font-size:10px}.memoryTrack{margin-top:6px;height:4px}.memoryTip{font-size:8px;margin-top:6px}}
+
+/* Full screen learning view: native Fullscreen API with iPhone CSS fallback. */
+.stationActions{display:flex;align-items:center;gap:9px;flex-wrap:wrap;justify-content:flex-end}
+.fullscreenBtn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:36px;padding:8px 12px;border-radius:10px;border:1px solid #70d9cb88;color:#e8fffa;background:linear-gradient(135deg,#1a5261,#233b5d);font-size:12px;font-weight:700;white-space:nowrap}
+.fullscreenBtn:hover{background:linear-gradient(135deg,#237479,#32527c)}
+#studyStage:fullscreen,#studyStage:-webkit-full-screen,#studyStage.fullscreenFallback{width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;min-height:0;margin:0;padding:0;border:0;border-radius:0;box-shadow:none;display:flex;flex-direction:column;overflow:hidden;background:#0b1729}
+#studyStage:fullscreen .stationtop,#studyStage:-webkit-full-screen .stationtop,#studyStage.fullscreenFallback .stationtop{flex:0 0 auto;padding:10px 18px}
+#studyStage:fullscreen .scene,#studyStage:-webkit-full-screen .scene,#studyStage.fullscreenFallback .scene{flex:1 1 auto;height:auto;min-height:0;max-height:none}
+#studyStage:fullscreen .studybar,#studyStage:-webkit-full-screen .studybar,#studyStage.fullscreenFallback .studybar{flex:0 0 auto;padding:10px 14px;max-height:35vh;max-height:35dvh;overflow-y:auto;background:#0f1d30}
+#studyStage.fullscreenFallback{position:fixed;inset:0;z-index:1000}
+body.fullscreenNoScroll{overflow:hidden}
+@media(max-width:560px){.stationActions{gap:6px}.stationActions .stationid{display:none}.fullscreenBtn{padding:8px 9px;font-size:11px}#studyStage:fullscreen .stationtop,#studyStage:-webkit-full-screen .stationtop,#studyStage.fullscreenFallback .stationtop{padding:8px 11px}#studyStage:fullscreen .stationtop p,#studyStage:-webkit-full-screen .stationtop p,#studyStage.fullscreenFallback .stationtop p{display:none}#studyStage:fullscreen .studybar,#studyStage:-webkit-full-screen .studybar,#studyStage.fullscreenFallback .studybar{padding:8px;gap:5px;max-height:42dvh}#studyStage:fullscreen .studybar .button,#studyStage:-webkit-full-screen .studybar .button,#studyStage.fullscreenFallback .studybar .button{padding:8px 9px;font-size:10px}}
+
+/* V3: Match the learning text to the 18px "Ga trí nhớ" heading. */
+#studyStage{--station-learning-font:18px}
+#studyStage .question .mainq,
+#studyStage .inlineAnswerItem b{font-size:var(--station-learning-font);line-height:1.55;overflow-wrap:anywhere;word-break:normal}
+/* The memory card appears to emerge from the train door toward the right. */
+#studyStage .question{
+  transform-origin:10% 55%;
+  transform:translateY(-50%) translateX(-58%) scale(.78) perspective(850px) rotateY(-13deg);
+  opacity:0;
+  filter:blur(5px);
+  pointer-events:none;
+  transition:opacity .62s cubic-bezier(.18,.7,.24,1),
+             transform .78s cubic-bezier(.14,.85,.24,1),
+             filter .68s ease;
+  will-change:transform,opacity,filter;
+}
+#studyStage .question.visible{
+  transform:translateY(-50%) translateX(0) scale(1) perspective(850px) rotateY(0deg);
+  opacity:1;filter:blur(0);pointer-events:auto;
+  transition-delay:.08s;
+}
+@media(max-width:560px){
+  #studyStage .question .mainq,#studyStage .inlineAnswerItem b{font-size:var(--station-learning-font)}
+  #studyStage .question{transform:translateY(-50%) translateX(-42%) scale(.79) perspective(850px) rotateY(-10deg)}
+  #studyStage .question.visible{transform:translateY(-50%) translateX(0) scale(1) perspective(850px) rotateY(0deg)}
+}
+@media(prefers-reduced-motion:reduce){
+  #studyStage .question,#studyStage .question.visible{transition-duration:.12s;transition-delay:0s;filter:none}
+}
+
+/* V4 - Compact memory card: keep all three information panels in view. */
+#studyStage{--station-learning-font:15px}
+#studyStage .question{
+  top:50%;max-height:96%;
+  scrollbar-width:thin;
+}
+#studyStage .memoryCardTop{padding:10px 13px 7px}
+#studyStage .memoryLead{padding:0 13px 9px;gap:8px}
+#studyStage .memoryLeadIcon{width:30px;height:30px;font-size:20px;border-radius:9px}
+#studyStage .memoryLeadTitle{font-size:14px;line-height:1.25}
+#studyStage .memoryLeadSubtitle{font-size:9px;margin-top:1px}
+#studyStage .memoryQuestion{margin:0 9px;padding:9px 11px;border-radius:11px}
+#studyStage .memoryQuestionLabel{font-size:9px;margin-bottom:4px;gap:5px}
+#studyStage .memoryLabelIcon{width:18px;height:18px;font-size:11px}
+#studyStage .question .mainq{font-size:var(--station-learning-font);line-height:1.38;padding:3px 0 1px;font-weight:800}
+#studyStage .inlineAnswer{margin:7px 9px 0;gap:6px}
+#studyStage .inlineAnswerItem,#studyStage .inlineAnswerItem:nth-child(2){padding:8px 11px;border-radius:9px}
+#studyStage .inlineAnswerItem span{font-size:9px;margin-bottom:3px;gap:5px}
+#studyStage .inlineAnswerItem .answerIcon{height:16px;width:16px;font-size:10px}
+#studyStage .inlineAnswerItem b{font-size:var(--station-learning-font);line-height:1.36}
+#studyStage .memoryFooter{padding:8px 13px 9px}
+#studyStage .memoryFooterLine{font-size:9px}
+#studyStage .memoryFooterLine strong{font-size:11px}
+#studyStage .memoryTrack{margin-top:5px;height:4px}
+#studyStage .memoryTip{margin-top:4px;font-size:9px;line-height:1.3}
+@media(max-width:560px){
+  #studyStage{--station-learning-font:13px}
+  #studyStage .question{top:50%;max-height:96%;}
+  #studyStage .memoryCardTop{padding:7px 9px 6px}
+  #studyStage .memoryLead{padding:0 9px 7px;gap:6px}
+  #studyStage .memoryLeadIcon{width:24px;height:24px;font-size:16px}
+  #studyStage .memoryLeadTitle{font-size:12px}
+  #studyStage .memoryLeadSubtitle{font-size:8px}
+  #studyStage .memoryQuestion{margin:0 6px;padding:7px 8px}
+  #studyStage .memoryQuestionLabel{font-size:8px;margin-bottom:3px}
+  #studyStage .question .mainq{font-size:var(--station-learning-font);line-height:1.3;padding:2px 0}
+  #studyStage .inlineAnswer{margin:5px 6px 0;gap:5px}
+  #studyStage .inlineAnswerItem,#studyStage .inlineAnswerItem:nth-child(2){padding:6px 8px}
+  #studyStage .inlineAnswerItem span{font-size:8px;margin-bottom:2px}
+  #studyStage .inlineAnswerItem b{font-size:var(--station-learning-font);line-height:1.3}
+  #studyStage .memoryFooter{padding:6px 9px 7px}
+  #studyStage .memoryTip{font-size:8px;margin-top:3px}
+}
+@media(max-height:550px){
+  #studyStage .question{max-height:98%}
+  #studyStage .memoryLeadSubtitle,#studyStage .memoryTip{display:none}
+  #studyStage .memoryFooter{padding-top:5px;padding-bottom:5px}
+}
+</style><style id="train-supabase-style">
+#trainAccountButton{position:fixed;right:15px;bottom:15px;z-index:300;background:#143c50;color:#ddfff3;border:1px solid #5ecdb8;border-radius:14px;padding:11px 15px;box-shadow:0 8px 25px #0009;font:600 12px 'Be Vietnam Pro',sans-serif;cursor:pointer}
+#trainAuthGate{position:fixed;inset:0;z-index:2000;background:linear-gradient(155deg,#091321,#16364b);display:flex;align-items:center;justify-content:center;padding:18px;overflow:auto}
+#trainAuthGate[hidden],#trainAccountDialog[hidden],#trainConflict[hidden]{display:none!important}
+.trainAuthCard{background:#11243a;border:1px solid #355771;border-radius:21px;box-shadow:0 20px 90px #0009;padding:27px;width:min(520px,100%);color:#f1faff}
+.trainAuthCard h2{font-size:21px;margin:0 0 10px}.trainAuthCard p{font-size:12px;line-height:1.7;color:#bed4e3}
+.trainAuthCard label{display:block;font-size:12px;margin-top:13px;color:#cde0ed}.trainAuthCard input{display:block;width:100%;margin-top:6px;padding:12px;background:#091b2c;color:white;border:1px solid #41617b;border-radius:9px;font:inherit;font-size:13px}
+.trainAccountActions{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.trainAccountActions button{padding:10px 12px;background:#20516a;color:white;border:1px solid #5296a2;border-radius:9px;font:600 12px 'Be Vietnam Pro',sans-serif;cursor:pointer}.trainAccountActions button:disabled{opacity:.45}
+.trainStatusLine{color:#8fe8cd!important;white-space:pre-wrap;overflow-wrap:anywhere}.trainDanger{color:#ffc3bc!important}
+#trainAccountDialog,#trainConflict{position:fixed;inset:0;z-index:2100;background:#020b16cc;display:flex;align-items:center;justify-content:center;padding:16px;overflow-y:auto}
+#trainAccountDialog .trainAuthCard,#trainConflict .trainAuthCard{max-height:95vh;overflow-y:auto}
+.trainSmall{font-size:11px!important;color:#a7c4d4!important}.trainAccountSection{border-top:1px solid #31516a;margin-top:15px;padding-top:13px}
+@media(max-width:560px){#trainAccountButton{bottom:8px;right:8px;padding:8px 10px;font-size:10px}.trainAuthCard{padding:18px}}
+</style></head>
+<body><main class="app"><header class="top"><div class="brand"><div class="logo">🚆</div><div><h1>Tàu điện thông tin</h1><p>Ghi nhớ mỗi ngày · Mỗi chuyến tàu là một điều mới</p></div></div><span class="pill">● MEMORY METRO · 3D</span></header>
+<div class="layout"><aside class="panel"><h2>📚 Chuẩn bị bài học</h2><p class="hint">Nhập bảng gồm 3 cột: <b>Thông tin</b>, <b>Nội dung</b>, <b>Ghi chú</b>. Chọn các mục bạn muốn ôn tập rồi cho tàu xuất phát.</p>
+<label class="upload"><span>📁</span><span><b>Nhập file Excel / CSV</b><small>Hỗ trợ .xlsx, .xls, .csv (xuất từ Google Sheets)</small></span><input type="file" id="fileInput" accept=".xlsx,.xls,.csv,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" /></label><button id="demoBtn" class="example" type="button">+ Nạp dữ liệu minh họa</button>
+<div class="sectionline"><strong>Danh sách thông tin</strong><span id="chosen" class="stat">0 / 0 đã chọn</span></div><input id="search" class="search" autocomplete="off" placeholder="🔎 Tìm theo thông tin, nội dung..." aria-label="Tìm kiếm thông tin"/><div class="actionsline"><button class="mini" id="selectAll">Chọn tất cả</button><button class="mini" id="deselectAll">Bỏ chọn</button><span id="fileName" class="small" style="margin-left:auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px"></span></div><div class="entries" id="entries"><div class="empty">Chưa có bảng dữ liệu.<br>Nhập Excel/CSV hoặc sử dụng dữ liệu minh họa.</div></div>
+<div class="settings"><div class="setting"><label for="seconds">Thời gian ghi nhớ</label><select id="seconds"><option value="5">5 giây</option><option value="10" selected>10 giây</option><option value="15">15 giây</option><option value="20">20 giây</option><option value="30">30 giây</option><option value="60">60 giây</option></select></div><div class="setting"><label for="order">Thứ tự</label><select id="order"><option value="random">Ngẫu nhiên · không lặp trong mỗi vòng</option><option value="sequential">Theo bảng</option></select></div></div><label class="checkopt"><input type="checkbox" id="autoShow"> Tự hiện đáp án trước khi đóng cửa (2 giây cuối)</label><button class="button primary wide" id="start">▶ Bắt đầu học</button><div class="footer">Dữ liệu bài học được lưu cục bộ và đồng bộ lên Supabase khi đăng nhập. Mô hình 3D, âm thanh tổng hợp và đọc file Excel cần có Internet để tải thư viện ở lần mở đầu tiên.</div></aside>
+<section class="panel stagepanel" id="studyStage"><div class="stationtop"><div><h2>🚉 Ga trí nhớ</h2><p id="stationDesc">Tàu đang chờ lệnh xuất phát</p></div><div class="stationActions"><span class="stationid" id="stationId">GA 01 / MEMORY</span><button type="button" id="fullscreenToggle" class="fullscreenBtn" aria-label="Bật chế độ toàn màn hình" aria-pressed="false" title="Toàn màn hình ga tàu">⛶ Toàn màn hình</button></div></div><div class="scene" id="scene"><canvas id="canvas"></canvas><div class="sceneCorner">🚉 METRO CAM · CAMERA 3/4 · 3D HIGH</div><div class="sceneLabel" id="sceneLabel">TUYẾN M-01 · SẴN SÀNG</div><div class="question" id="question" role="region" aria-label="Thẻ ghi nhớ tại ga">
+  <div class="memoryCardTop"><span class="memoryLive"><i></i> GA GHI NHỚ</span><span class="memoryIndex" id="memoryIndex">01 / 01</span></div>
+  <div class="memoryLead"><span class="memoryLeadIcon" aria-hidden="true">✦</span><div><div class="memoryLeadTitle">Bạn còn nhớ không?</div><div class="memoryLeadSubtitle">Tập trung và thử tự trả lời</div></div></div>
+  <div class="memoryQuestion"><div class="memoryQuestionLabel"><span class="memoryLabelIcon">?</span><span>THÔNG TIN CẦN NHỚ</span></div><div class="mainq" id="questionText">Thông tin sẽ xuất hiện ở đây</div></div>
+  <div class="inlineAnswer" id="inlineAnswer" aria-hidden="true">
+   <div class="inlineAnswerItem"><span><span class="answerIcon">✓</span> NỘI DUNG</span><b id="answerContent"></b></div>
+   <div class="inlineAnswerItem"><span><span class="answerIcon noteIcon">✎</span> GHI CHÚ</span><b id="answerNote"></b></div>
+  </div>
+  <div class="memoryFooter"><div class="memoryFooterLine"><span id="memoryPrompt">◷ Đang ghi nhớ...</span><strong id="memoryTime">10s</strong></div><div class="memoryTrack"><div id="memoryTrackFill"></div></div><div class="memoryTip" id="memoryTip">Nhớ đáp án trước khi thời gian kết thúc</div></div>
+ </div><div class="roundOverlay" id="roundOverlay" role="status" aria-live="polite"><span class="roundIcon">✓</span><strong id="roundOverlayTitle">Hoàn thành vòng 1!</strong><span id="roundOverlayDesc">Chuẩn bị vòng tiếp theo…</span><small>Chuyến học sẽ tự động tiếp tục</small></div><div class="countbadge" id="progress">Chuyến <strong>0</strong> / 0</div><div class="statusright" id="status">Tàu đang đỗ tại ga</div><div class="overlayerror" id="threeError">Không tải được đồ họa 3D. Hãy kết nối Internet, tải lại trang hoặc thử trình duyệt Chrome mới nhất.</div></div>
+<div class="studybar"><button class="button secondary" id="wakeToggle" type="button" aria-pressed="true" title="Giữ màn hình sáng trong lúc học">☀️ Màn hình: Tự giữ sáng</button><button class="button secondary" id="soundToggle" type="button" aria-pressed="true" title="Bật / tắt âm thanh">🔊 Âm thanh: Bật</button><button class="button secondary" id="reveal" disabled>👁 Xem đáp án</button><button class="button secondary" id="next" disabled>⏭ Chuyến tiếp</button><button class="button secondary" id="pause" disabled>⏸ Tạm dừng</button><button class="button secondary" id="stop" disabled>⏹ Kết thúc</button><div class="timer"><div class="timecircle" id="timecircle"><b id="timeleft">10s</b></div><div class="timehint">Đếm ngược khi cửa tàu mở</div></div></div>
+</section></div><div class="toast" id="toast"></div></main>
+<script src="https://cdn.jsdelivr.net/npm/three@0.148.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id);let data=[],selected=new Set(),queue=[],idx=0,current=null,session=false,paused=false,phase='idle',phaseAt=0,pausedAt=0,remaining=10,lastSecond=null,revealManually=false;const times={arrive:2.35,open:1.1,close:.95,depart:1.75,roundBreak:3.0};let duration=10,round=1,completedRounds=0;
+// Prevent the phone from sleeping during an active study session (where supported).
+let keepAwake=true,wakeSentinel=null,wakePending=false,wakeGeneration=0;
+function wakeWanted(){return keepAwake&&session&&!paused&&document.visibilityState==='visible'}
+function updateWakeUI(status=''){
+ const b=$('wakeToggle');if(!b)return;
+ b.setAttribute('aria-pressed',String(keepAwake));
+ b.textContent=!keepAwake?'🌙 Màn hình: Không giữ sáng':wakeSentinel&&!wakeSentinel.released?'☀️ Màn hình: Đang giữ sáng':status==='unavailable'?'⚠️ Giữ sáng không khả dụng':'☀️ Màn hình: Tự giữ sáng';
+ b.title=status==='unavailable'?'Hãy mở trang qua HTTPS (ví dụ GitHub Pages), dùng trình duyệt hỗ trợ và tắt chế độ tiết kiệm pin nếu cần.':'Giữ màn hình bật khi đang học và ứng dụng ở phía trước';
+}
+async function releaseWake(){
+ wakeGeneration++;const lock=wakeSentinel;wakeSentinel=null;updateWakeUI();
+ if(lock&&!lock.released){try{await lock.release()}catch(e){console.debug('Wake release',e)}}
+}
+async function acquireWake(){
+ if(!wakeWanted()||wakePending||wakeSentinel&&!wakeSentinel.released)return;
+ if(!window.isSecureContext||!navigator.wakeLock?.request){updateWakeUI('unavailable');return}
+ const generation=wakeGeneration;wakePending=true;
+ try{
+  const lock=await navigator.wakeLock.request('screen');
+  if(generation!==wakeGeneration||!wakeWanted()) {try{await lock.release()}catch(e){} return}
+  wakeSentinel=lock;
+  lock.addEventListener('release',()=>{if(wakeSentinel===lock){wakeSentinel=null;updateWakeUI()}});
+  updateWakeUI();
+ }catch(e){console.info('Screen wake lock unavailable:',e?.name||e);updateWakeUI('unavailable')}
+ finally{wakePending=false}
+}
+document.addEventListener('visibilitychange',()=>{
+ if(document.visibilityState==='visible')acquireWake();else releaseWake();
+});
+$('wakeToggle').onclick=()=>{keepAwake=!keepAwake;if(keepAwake){updateWakeUI();acquireWake()}else releaseWake()};
+function toast(msg){const el=$('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),2900)}
+function headers(row){return row.map(s=>String(s??'').trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/\s+/g,' '))}
+function parseRows(rows){let clean=rows.filter(r=>Array.isArray(r)&&r.some(c=>String(c??'').trim()));if(!clean.length)return[];let pos=clean.findIndex(r=>{let a=headers(r);return a.includes('thong tin')&&a.includes('noi dung')});let col=[0,1,2],start=0;if(pos>=0){let hs=headers(clean[pos]);col=[hs.indexOf('thong tin'),hs.indexOf('noi dung'),hs.indexOf('ghi chu')];start=pos+1}return clean.slice(start).map((r,i)=>({id:i+1,info:String(r[col[0]]??'').trim(),content:String(r[col[1]]??'').trim(),note:col[2]<0?'':String(r[col[2]]??'').trim()})).filter(r=>r.info)}
+function loadRecords(records,name){if(!records.length){toast('Không tìm thấy dữ liệu hợp lệ. Kiểm tra cột Thông tin.');return}stopSession();data=records;selected=new Set(data.map(x=>x.id));$('fileName').textContent=name;$('search').value='';renderList();saveStudyData();toast(`Đã nhập ${data.length} thông tin`)}
+function renderList(){let q=$('search').value.toLocaleLowerCase('vi');const shown=data.filter(r=>(r.info+' '+r.content+' '+r.note).toLocaleLowerCase('vi').includes(q));const root=$('entries');root.textContent='';if(!shown.length){let div=document.createElement('div');div.className='empty';div.textContent=data.length?'Không có thông tin phù hợp.':'Chưa có bảng dữ liệu. Nhập Excel/CSV hoặc nạp dữ liệu minh họa.';root.append(div)}for(const x of shown){let label=document.createElement('label');label.className='entry';let cb=document.createElement('input');cb.type='checkbox';cb.checked=selected.has(x.id);cb.addEventListener('change',()=>{if(cb.checked)selected.add(x.id);else selected.delete(x.id);updateSelected();saveStudyData()});let text=document.createElement('span');let strong=document.createElement('strong');strong.textContent=x.info;let small=document.createElement('small');small.textContent=[x.content,x.note].filter(Boolean).join(' · ')||'Chưa có nội dung';text.append(strong,small);label.append(cb,text);root.append(label)}updateSelected()}
+function updateSelected(){$('chosen').textContent=`${selected.size} / ${data.length} đã chọn`;saveStudyData()}
+$('search').addEventListener('input',renderList);$('selectAll').onclick=()=>{data.forEach(x=>selected.add(x.id));renderList()};$('deselectAll').onclick=()=>{selected.clear();renderList()};
+$('demoBtn').onclick=()=>loadRecords([{info:'Động cơ',content:'Là 120W',note:'Cho băng tải'},{info:'Cảm biến quang',content:'Phát hiện vật thể bằng ánh sáng',note:'Kiểm tra vị trí sản phẩm'},{info:'Xi lanh khí nén',content:'Biến áp suất khí thành chuyển động thẳng',note:'Dùng đẩy và kẹp chi tiết'},{info:'Biến tần',content:'Điều chỉnh tốc độ động cơ AC',note:'Thay đổi tần số nguồn cấp'},{info:'PLC',content:'Bộ điều khiển logic lập trình được',note:'Điều khiển trình tự máy tự động'},{info:'Ray trượt',content:'Dẫn hướng chuyển động tuyến tính',note:'Lắp với con trượt'}].map((x,i)=>({...x,id:i+1})),'Dữ liệu minh họa');
+$('fileInput').addEventListener('change',async e=>{let file=e.target.files?.[0];if(!file)return;try{let rows;if(file.name.toLowerCase().endsWith('.csv')){let text=await file.text();if(window.XLSX){let wb=XLSX.read(text,{type:'string'});rows=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{header:1,defval:''})}else{rows=parseCSV(text)}}else{if(!window.XLSX)throw Error('Chưa tải được thư viện đọc Excel. Hãy kiểm tra kết nối mạng, hoặc xuất file Google Sheets sang CSV.');let wb=XLSX.read(await file.arrayBuffer(),{type:'array'});rows=XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{header:1,defval:''})}loadRecords(parseRows(rows),file.name)}catch(err){console.error(err);toast('Lỗi đọc file: '+err.message)}e.target.value=''});
+function parseCSV(src){src=src.replace(/^\uFEFF/,'');let result=[],line=[],cell='',quoted=false;for(let i=0;i<src.length;i++){let c=src[i];if(c==='"'){if(quoted&&src[i+1]==='"'){cell+='"';i++}else quoted=!quoted}else if(!quoted&&(c===','||c===';'||c==='\t')){line.push(cell);cell=''}else if(!quoted&&(c==='\n'||c==='\r')){if(c==='\r'&&src[i+1]==='\n')i++;line.push(cell);result.push(line);line=[];cell=''}else cell+=c}line.push(cell);result.push(line);return result}
+function shuffle(a){for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}function buildQueue(){queue=data.filter(x=>selected.has(x.id));if($('order').value==='random')shuffle(queue);idx=0;round=1;completedRounds=0}function setStatus(t){$('status').textContent=t;$('stationDesc').textContent=t}function setPhase(name,now){phase=name;phaseAt=now;lastSecond=null;playCue(name);if(name==='arrive'){setStatus('🚆 Tàu đang vào ga');$('sceneLabel').textContent='TUYẾN M-01 · TÀU ĐANG ĐẾN';$('question').classList.remove('visible');hideAnswer()}if(name==='open'){setStatus('🚪 Đang mở cửa');$('sceneLabel').textContent='GA TRÍ NHỚ · CHUẨN BỊ GHI NHỚ'}if(name==='study'){$('memoryPrompt').textContent='◷ Đang ghi nhớ...';$('memoryTip').textContent='Nhớ đáp án trước khi thời gian kết thúc';$('memoryTime').textContent=duration+'s';$('memoryTrackFill').style.width='100%';setStatus('🧠 Hãy nhớ nội dung và ghi chú');$('sceneLabel').textContent='CỬA MỞ · THỜI GIAN GHI NHỚ';$('question').classList.add('visible');$('timecircle').style.setProperty('--percent','100%');$('timeleft').textContent=duration+'s'}if(name==='close'){setStatus('🚪 Hết giờ · Đang đóng cửa');$('question').classList.remove('visible');$('sceneLabel').textContent='GA TRÍ NHỚ · TÀU SẮP RỜI GA';hideAnswer()}if(name==='depart'){setStatus('🚆 Tàu đang rời ga');$('sceneLabel').textContent='TUYẾN M-01 · TÀU XUẤT PHÁT'}}
+function displayCurrent(now){if(!session)return;if(idx>=queue.length){endComplete(now);return}current=queue[idx];$('questionText').textContent=current.info;$('memoryIndex').textContent=String(idx+1).padStart(2,'0')+' / '+String(queue.length).padStart(2,'0');$('memoryTime').textContent=duration+'s';$('memoryTrackFill').style.width='100%';$('answerContent').textContent=current.content||'—';$('answerNote').textContent=current.note||'—';$('progress').innerHTML=`Vòng <strong>${round}</strong> · Chuyến <strong>${idx+1}</strong> / ${queue.length}`;revealManually=false;setPhase('arrive',now)}
+function startSession(){$('roundOverlay').classList.remove('show');unlockAudio();if(!selected.size){toast('Hãy chọn ít nhất một thông tin trước khi học.');return}if(!train){toast('Chưa tải được tàu 3D. Kiểm tra kết nối Internet và tải lại trang.');return}duration=Number($('seconds').value)||10;buildQueue();session=true;paused=false;acquireWake();if(keepAwake&&(!window.isSecureContext||!navigator.wakeLock?.request))toast('Giữ sáng cần HTTPS và trình duyệt hỗ trợ. Hãy dùng link GitHub Pages.');$('pause').textContent='⏸ Tạm dừng';for(const id of ['reveal','next','pause','stop'])$(id).disabled=false;$('start').textContent='↻ Học lại từ đầu';displayCurrent(performance.now());toast(`Bắt đầu với ${queue.length} thông tin`)}
+function stopSession(){$('roundOverlay').classList.remove('show');stopRailSound();releaseWake();session=false;paused=false;phase='idle';current=null;for(const id of ['reveal','next','pause','stop'])$(id).disabled=true;$('pause').textContent='⏸ Tạm dừng';$('start').textContent='▶ Bắt đầu học';$('question').classList.remove('visible');hideAnswer();$('sceneLabel').textContent='TUYẾN M-01 · SẴN SÀNG';setStatus('Tàu đang chờ lệnh xuất phát');$('progress').innerHTML='Vòng <strong>0</strong> · Chuyến <strong>0</strong> / 0';round=1;completedRounds=0;$('timeleft').textContent=$('seconds').value+'s';$('timecircle').style.setProperty('--percent','100%');if(train){train.group.position.x=0;setDoor(0)}}
+function endComplete(now){if(!session||!queue.length)return;stopRailSound();completedRounds=round;current=null;hideAnswer();$('question').classList.remove('visible');$('sceneLabel').textContent=`✅ HOÀN THÀNH VÒNG ${completedRounds}`;$('progress').innerHTML=`Đã xong <strong>${completedRounds}</strong> vòng · ${queue.length} mục/vòng`;setStatus(`🎉 Hết vòng học ${completedRounds} — Sắp bắt đầu vòng ${completedRounds+1}`);$('timeleft').textContent='✓';$('timecircle').style.setProperty('--percent','100%');$('roundOverlayTitle').textContent=`Hoàn thành vòng ${completedRounds}!`;$('roundOverlayDesc').textContent=`Đã ôn đủ ${queue.length} thông tin. Chuẩn bị vòng ${completedRounds+1}…`;$('roundOverlay').classList.add('show');setPhase('roundBreak',now)}
+function beginNextRound(now){const last=queue[queue.length-1]?.id;queue=data.filter(x=>selected.has(x.id));if($('order').value==='random'){shuffle(queue);if(queue.length>1&&queue[0].id===last){let j=1+Math.floor(Math.random()*(queue.length-1));[queue[0],queue[j]]=[queue[j],queue[0]]}}idx=0;round=completedRounds+1;$('roundOverlay').classList.remove('show');displayCurrent(now);toast(`Bắt đầu vòng ${round} · ${queue.length} thông tin`)}
+function hideAnswer(){$('question').classList.remove('has-answer');$('memoryPrompt').textContent='◷ Đang ghi nhớ...';$('memoryTip').textContent='Nhớ đáp án trước khi thời gian kết thúc';$('inlineAnswer').classList.remove('show');$('inlineAnswer').setAttribute('aria-hidden','true');revealManually=false;$('reveal').textContent='👁 Xem đáp án'}function showAnswer(manual=false){$('question').classList.add('has-answer');$('memoryPrompt').textContent='✓ Đã hiện đáp án';$('memoryTip').textContent='Đối chiếu câu trả lời của bạn';$('inlineAnswer').classList.add('show');$('inlineAnswer').setAttribute('aria-hidden','false');revealManually=manual;$('reveal').textContent='🙈 Ẩn đáp án'}function toggleAnswer(){if($('inlineAnswer').classList.contains('show'))hideAnswer();else showAnswer(true)}
+$('soundToggle').onclick=()=>{soundOn=!soundOn;$('soundToggle').textContent=soundOn?'🔊 Âm thanh: Bật':'🔇 Âm thanh: Tắt';$('soundToggle').setAttribute('aria-pressed',String(soundOn));if(soundOn)unlockAudio();else stopRailSound()};$('start').onclick=startSession;$('stop').onclick=stopSession;$('reveal').onclick=()=>{if(session)toggleAnswer()};$('next').onclick=()=>{if(!session)return;paused=false;$('pause').textContent='⏸ Tạm dừng';acquireWake();stopRailSound();if(phase==='roundBreak'){beginNextRound(performance.now());return}idx++;displayCurrent(performance.now())};$('pause').onclick=()=>{if(!session)return;paused=!paused;if(paused){releaseWake();pausedAt=performance.now();$('pause').textContent='▶ Tiếp tục';stopRailSound();setStatus('⏸ Đã tạm dừng')}else{acquireWake();phaseAt+=performance.now()-pausedAt;$('pause').textContent='⏸ Tạm dừng';if(phase==='arrive'||phase==='depart')railSound();setStatus('▶ Tiếp tục hành trình')}};
+$('seconds').onchange=()=>{if(!session){$('timeleft').textContent=$('seconds').value+'s'}};window.addEventListener('keydown',e=>{if(/INPUT|SELECT|TEXTAREA/.test(document.activeElement?.tagName||''))return;if(e.code==='Space'&&session){e.preventDefault();$('pause').click()}if(e.code==='ArrowRight'&&session)$('next').click();if(e.code==='KeyA'&&session)$('reveal').click()});
+let scene,camera,renderer,train,clockStart=performance.now();let tracks=[];let prev=performance.now();
+let soundOn=true,audioCtx=null,railOsc=null,railGain=null,railFilter=null;
+function unlockAudio(){if(!soundOn)return;try{audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume()}catch(e){console.warn('Audio unavailable',e)}}
+function tone(f,seconds,kind='sine',vol=.055,delay=0){if(!soundOn||!audioCtx)return;let t=audioCtx.currentTime+delay,o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=kind;o.frequency.setValueAtTime(f,t);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(vol,t+.03);g.gain.exponentialRampToValueAtTime(.0001,t+seconds);o.connect(g).connect(audioCtx.destination);o.start(t);o.stop(t+seconds+.04)}
+function railSound(){if(!soundOn||!audioCtx||railOsc)return;railOsc=audioCtx.createOscillator();railFilter=audioCtx.createBiquadFilter();railGain=audioCtx.createGain();railOsc.type='sawtooth';railOsc.frequency.value=52;railFilter.type='lowpass';railFilter.frequency.value=105;railGain.gain.value=.0001;railOsc.connect(railFilter).connect(railGain).connect(audioCtx.destination);railOsc.start();railGain.gain.setTargetAtTime(.022,audioCtx.currentTime,.3)}
+function stopRailSound(){if(!railOsc)return;let o=railOsc,g=railGain;railOsc=null;railGain=null;railFilter=null;try{g.gain.setTargetAtTime(.00001,audioCtx.currentTime,.12);o.stop(audioCtx.currentTime+.5)}catch(e){}}
+function playCue(name){if(!soundOn)return;unlockAudio();if(name==='arrive'||name==='depart'){railSound();if(name==='depart')tone(430,.15,'sine',.027)}else{stopRailSound();if(name==='open'){tone(780,.16,'sine',.065);tone(1020,.19,'sine',.053,.19)}if(name==='close'){tone(860,.15,'sine',.068);tone(680,.19,'sine',.068,.19)}}}
+
+function mat(hex,metalness=.25,roughness=.55){return new THREE.MeshStandardMaterial({color:hex,metalness,roughness})}
+function boxMesh(w,h,d,material,x,y,z,parent){let mesh=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),material);mesh.position.set(x,y,z);(parent||scene).add(mesh);return mesh}
+
+function init3D(){if(!window.THREE){$('threeError').style.display='block';return}try{
+scene=new THREE.Scene();scene.background=new THREE.Color(0xcfc8bf);scene.fog=new THREE.Fog(0xd5cec5,28,54);
+camera=new THREE.PerspectiveCamera(32,1,.1,120);camera.position.set(7.0,5.25,28.5);camera.lookAt(0,2.52,0);
+renderer=new THREE.WebGLRenderer({canvas:$('canvas'),antialias:true,powerPreference:'high-performance',alpha:false});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio,1.75));renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.25;
+renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+scene.add(new THREE.HemisphereLight(0xf1f4f7,0x6f6559,2.15));
+let sun=new THREE.DirectionalLight(0xfff5e6,2.7);sun.position.set(-8,16,12);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);sun.shadow.camera.left=-20;sun.shadow.camera.right=20;sun.shadow.camera.top=14;sun.shadow.camera.bottom=-14;scene.add(sun);
+const wallMat=mat(0x8d8f93,.05,.92), wallDark=mat(0x6b6d71,.06,.95), pillar=mat(0xe8e0d3,.06,.88), canopy=mat(0xdccfbf,.04,.9), steel=mat(0x6a6a6a,.35,.55), floorDark=mat(0x27282a,.08,.96), yellow=mat(0xe7bf34,.15,.45), yellow2=mat(0xf1d36a,.12,.4), white=mat(0xf6f7f7,.08,.55), blue=mat(0x1aa0d8,.18,.45), blueDark=mat(0x0b678d,.22,.42), glass=new THREE.MeshStandardMaterial({color:0xbfe2ef,metalness:.08,roughness:.1,transparent:true,opacity:.72,side:THREE.DoubleSide}), shadowMat=mat(0x5b5d62,.16,.9), signFrame=mat(0x6d706f,.22,.54);
+function roundedRectShape(w,h,r){const s=new THREE.Shape(),x=-w/2,y=-h/2; s.moveTo(x+r,y); s.lineTo(x+w-r,y); s.quadraticCurveTo(x+w,y,x+w,y+r); s.lineTo(x+w,y+h-r); s.quadraticCurveTo(x+w,y+h,x+w-r,y+h); s.lineTo(x+r,y+h); s.quadraticCurveTo(x,y+h,x,y+h-r); s.lineTo(x,y+r); s.quadraticCurveTo(x,y,x+r,y); return s;}
+function makePanel(w,h,d,material,x,y,z,rx=0,ry=0,rz=0,parent){let m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),material);m.position.set(x,y,z);m.rotation.set(rx,ry,rz);m.castShadow=true;m.receiveShadow=true;(parent||scene).add(m);return m;}
+// back wall and station shell
+makePanel(40,11,.55,wallMat,0,4.2,-3.2);
+makePanel(40,1.4,3.4,canopy,0,9.55,-1.1);
+makePanel(40,.32,4.2,steel,0,8.58,-1.2);
+makePanel(40,2.15,1.4,wallDark,0,6.45,-4.0);
+// angled shadow wedges on wall
+let wedge1=new THREE.Mesh(new THREE.BufferGeometry(),shadowMat);
+const wedgeGeo1=new THREE.BufferGeometry();
+const v1=new Float32Array([-3,0,-2.88, 9,0,-2.88, 9,7.5,-2.88, -3,3.1,-2.88]);
+wedgeGeo1.setAttribute('position',new THREE.BufferAttribute(v1,3)); wedgeGeo1.setIndex([0,1,2,0,2,3]); wedgeGeo1.computeVertexNormals(); wedge1.geometry=wedgeGeo1; wedge1.material=new THREE.MeshStandardMaterial({color:0x797c82,metalness:.06,roughness:.96,transparent:true,opacity:.45,side:THREE.DoubleSide}); scene.add(wedge1);
+let wedge2=new THREE.Mesh(new THREE.BufferGeometry(),new THREE.MeshStandardMaterial({color:0x7d7f83,metalness:.04,roughness:.98,transparent:true,opacity:.22,side:THREE.DoubleSide}));
+const wedgeGeo2=new THREE.BufferGeometry();
+const v2=new Float32Array([-18,0,-2.87, 5,0,-2.87, -1,6.2,-2.87, -18,6.2,-2.87]);
+wedgeGeo2.setAttribute('position',new THREE.BufferAttribute(v2,3)); wedgeGeo2.setIndex([0,1,2,0,2,3]); wedgeGeo2.computeVertexNormals(); wedge2.geometry=wedgeGeo2; scene.add(wedge2);
+// platform base and tracks
+makePanel(40,.48,8.2,floorDark,0,-.72,2.3);
+makePanel(40,.18,4.3,mat(0x434649,.06,.95),0,-.18,5.7);
+for(const z of [5.35,6.7]) makePanel(40,.07,.18,yellow,0,.05,z);
+for(const z of [4.65,7.4]) makePanel(40,.05,.12,yellow2,0,.08,z);
+for(let x=-18;x<=18;x+=2.2) makePanel(1.1,.10,2.25,mat(0x7a7368,.12,.92),x,-.54,1.25);
+for(const z of [.5,2.1]) makePanel(40,.17,.16,mat(0x808487,.56,.38),0,-.4,z);
+// platform top and edge strip
+makePanel(40,.36,3.0,mat(0xc5c5c8,.08,.86),0,.42,3.2);
+makePanel(40,.12,.18,yellow,0,.64,2.26);
+makePanel(40,.06,.1,white,0,.73,2.44);
+// Concrete seams, safety warning tiles, canopy light strips and edge fixtures.
+const tileJoint=mat(0x929699,.04,.85);
+for(let z=2.65;z<4.5;z+=.49)makePanel(40,.012,.018,tileJoint,0,.611,z);
+for(let x=-20;x<=20;x+=1.2)makePanel(.025,.013,2.1,tileJoint,x,.614,3.42);
+for(let x=-18;x<18;x+=.72){makePanel(.24,.024,.15,mat(0xeed65c,.04,.75),x,.688,2.55)}
+for(const x of [-13,-7,0,7,13])makePanel(3.8,.08,.36,new THREE.MeshBasicMaterial({color:0xfff8df}),x,8.23,1.8);
+
+// left and right pillars only, no middle pillar
+const pillarXs=[-12.7,12.7];
+for(const x of pillarXs){
+  makePanel(1.4,8.2,1.0,pillar,x,4.58,1.25);
+  makePanel(2.1,.55,1.3,pillar,x,8.58,1.28);
+  makePanel(2.4,.34,1.55,pillar,x,.12,1.25);
+  makePanel(1.65,.18,1.1,steel,x,-.15,1.25);
+  makePanel(1.8,.16,.18,yellow,x,.74,1.7);
+  makePanel(1.8,.16,.18,mat(0x444444,.15,.82),x,.93,1.7);
+  let badgeCanvas=document.createElement('canvas');badgeCanvas.width=160;badgeCanvas.height=160;let cx=badgeCanvas.getContext('2d');cx.fillStyle='#f0d54a';cx.beginPath();cx.arc(80,80,54,0,Math.PI*2);cx.fill();cx.lineWidth=7;cx.strokeStyle='#8a6a00';cx.stroke();cx.fillStyle='#5d4a00';cx.font='bold 52px sans-serif';cx.textAlign='center';cx.textBaseline='middle';cx.fillText(x<0?'01':'03',80,84);
+  let badgeTex=new THREE.CanvasTexture(badgeCanvas);badgeTex.colorSpace=THREE.SRGBColorSpace;
+  let badge=new THREE.Mesh(new THREE.PlaneGeometry(.72,.72),new THREE.MeshBasicMaterial({map:badgeTex,transparent:true}));badge.position.set(x,5.9,1.81);scene.add(badge);
+}
+// signboards above platform
+function makeArrowSign(x){
+  makePanel(4.8,1.35,.22,signFrame,x,7.65,.85);
+  let c=document.createElement('canvas');c.width=480;c.height=140;let g=c.getContext('2d');g.fillStyle='#aee6f3';g.fillRect(8,8,464,124);g.fillStyle='#d7f4fb';g.fillRect(282,8,36,124);g.fillRect(330,8,36,124);g.strokeStyle='#5b7982';g.lineWidth=10;g.strokeRect(8,8,464,124);g.fillStyle='#2f3b40';g.beginPath();g.moveTo(90,70);g.lineTo(152,28);g.lineTo(152,52);g.lineTo(218,52);g.lineTo(218,88);g.lineTo(152,88);g.lineTo(152,112);g.closePath();g.fill();g.fillRect(248,44,110,8);g.fillRect(248,88,70,8);
+  let tex=new THREE.CanvasTexture(c);tex.colorSpace=THREE.SRGBColorSpace; let face=new THREE.Mesh(new THREE.PlaneGeometry(4.52,1.12),new THREE.MeshBasicMaterial({map:tex,transparent:true})); face.position.set(x,7.65,.98); scene.add(face);
+}
+makeArrowSign(-4.9); makeArrowSign(4.9);
+// train shadow
+let trainShadow=new THREE.Mesh(new THREE.PlaneGeometry(17,2.9),new THREE.MeshBasicMaterial({color:0x000000,transparent:true,opacity:.18})); trainShadow.rotation.x=-Math.PI/2; trainShadow.position.set(.55,.05,1.85); scene.add(trainShadow);
+// Realistic custom-built 3D orange metro train, inspired by the supplied reference.
+let group=new THREE.Group();scene.add(group);
+const orange=new THREE.MeshPhysicalMaterial({color:0xf36b3f,metalness:.32,roughness:.27,clearcoat:.75,clearcoatRoughness:.17});
+const sunOrange=new THREE.MeshPhysicalMaterial({color:0xff9859,metalness:.25,roughness:.24,clearcoat:.8});
+const deepOrange=mat(0xc94731,.25,.34),roof=mat(0x65717d,.64,.35),roofTrim=mat(0x404953,.64,.34);
+const under=mat(0x292b37,.47,.53),steelGrey=mat(0x8b959f,.68,.28),glassDark=new THREE.MeshPhysicalMaterial({color:0x19384a,metalness:.13,roughness:.12,transmission:.05,clearcoat:1,transparent:true,opacity:.92});
+const glassBlue=new THREE.MeshPhysicalMaterial({color:0x86c9e6,metalness:.12,roughness:.13,clearcoat:1,clearcoatRoughness:.08,transparent:true,opacity:.95});
+const glassShine=new THREE.MeshBasicMaterial({color:0xe5faff,transparent:true,opacity:.34,depthWrite:false});
+const rubber=mat(0x22242d,.18,.82),chassis=mat(0x34343e,.37,.62),doorMaterial=new THREE.MeshPhysicalMaterial({color:0xfb8650,metalness:.28,roughness:.29,clearcoat:.8});
+const headlight=new THREE.MeshBasicMaterial({color:0xfff4c7});
+function shapeMesh(points,material,z,parent=group){let sh=new THREE.Shape();points.forEach((pt,i)=>i?sh.lineTo(pt[0],pt[1]):sh.moveTo(pt[0],pt[1]));sh.closePath();let mesh=new THREE.Mesh(new THREE.ShapeGeometry(sh),material);mesh.position.z=z;mesh.material.side=THREE.DoubleSide;parent.add(mesh);return mesh;}
+function roundedPlate(w,h,r,material,x,y,z,parent=group){let sh=new THREE.Shape(),a=-w/2,b=-h/2;sh.moveTo(a+r,b);sh.lineTo(a+w-r,b);sh.quadraticCurveTo(a+w,b,a+w,b+r);sh.lineTo(a+w,b+h-r);sh.quadraticCurveTo(a+w,b+h,a+w-r,b+h);sh.lineTo(a+r,b+h);sh.quadraticCurveTo(a,b+h,a,b+h-r);sh.lineTo(a,b+r);sh.quadraticCurveTo(a,b,a+r,b);let mesh=new THREE.Mesh(new THREE.ShapeGeometry(sh),material);mesh.position.set(x,y,z);parent.add(mesh);return mesh;}
+// Smooth thick extruded carriage with its rounded roof and tapered twin driver's cabs.
+let profile=new THREE.Shape();profile.moveTo(-9.55,1.12);profile.bezierCurveTo(-10.1,1.3,-10.46,1.8,-10.36,2.39);profile.bezierCurveTo(-10.28,2.97,-9.77,3.5,-9.13,3.61);profile.quadraticCurveTo(-8.92,3.78,-8.55,3.79);profile.lineTo(8.55,3.79);profile.quadraticCurveTo(8.92,3.78,9.13,3.61);profile.bezierCurveTo(9.77,3.5,10.28,2.97,10.36,2.39);profile.bezierCurveTo(10.46,1.8,10.1,1.3,9.55,1.12);profile.lineTo(-9.55,1.12);profile.closePath();
+const geometry=new THREE.ExtrudeGeometry(profile,{depth:1.65,steps:1,curveSegments:24,bevelEnabled:true,bevelThickness:.12,bevelSize:.10,bevelSegments:5});geometry.translate(0,0,-.825);
+let body=new THREE.Mesh(geometry,orange);body.castShadow=true;body.receiveShadow=true;group.add(body);
+// Side skirt, continuous roof cap and soft metallic highlight ribbons.
+makePanel(18.45,.36,1.68,under,0,1.03,0,0,0,0,group);
+makePanel(18.4,.14,1.68,deepOrange,0,1.34,0,0,0,0,group);
+let upperRoof=new THREE.Mesh(new THREE.BoxGeometry(17.25,.18,1.38),roof);upperRoof.position.set(0,3.88,0);group.add(upperRoof);
+makePanel(17.5,.055,.09,roofTrim,0,3.73,.88,0,0,0,group);
+makePanel(17.15,.032,.07,sunOrange,0,3.52,.94,0,0,0,group);
+makePanel(17.6,.042,.045,sunOrange,0,1.64,.94,0,0,0,group);
+// Cabin side windows: tapered dark windscreens at both ends and subtle glass reflections.
+shapeMesh([[-10.0,2.01],[-9.75,2.7],[-9.26,3.30],[-8.56,3.35],[-8.67,2.74],[-9.08,2.15]],glassDark,.958);
+shapeMesh([[10.0,2.01],[9.75,2.7],[9.26,3.30],[8.56,3.35],[8.67,2.74],[9.08,2.15]],glassDark,.958);
+shapeMesh([[-9.72,2.43],[-9.43,3.1],[-9.26,3.15],[-9.46,2.45]],glassShine,.981);
+shapeMesh([[9.72,2.43],[9.43,3.1],[9.26,3.15],[9.46,2.45]],glassShine,.981);
+// Glazed passenger windows set in rounded graphite rubber seals.
+for(const [x,w] of [[-7.05,1.5],[-4.2,1.44],[-1.63,1.56],[1.95,1.86],[5.28,1.55]]){
+ roundedPlate(w+.16,.91,.12,rubber,x,2.69,.955);
+ roundedPlate(w,.76,.10,glassBlue,x,2.69,.971);
+ shapeMesh([[x+w*.03,2.33],[x+w*.29,3.05],[x+w*.42,3.05],[x+w*.16,2.33]],glassShine,.993);
+ makePanel(w*.74,.025,.03,mat(0xdbf3fc,.09,.15),x,3.045,.994,0,0,0,group);
+}
+// Physically separated carriage-panel joints and metal handles.
+for(const x of [-7.96,-2.81,2.98,7.67])makePanel(.022,2.11,.024,deepOrange,x,2.45,.973,0,0,0,group);
+// Each rear door looks like a real passenger door; center door slides during recall.
+function fixedDoor(x){roundedPlate(1.08,2.04,.10,deepOrange,x,2.21,.962);roundedPlate(.99,1.95,.08,doorMaterial,x,2.21,.976);roundedPlate(.70,.73,.08,rubber,x,2.71,.986);roundedPlate(.62,.65,.06,glassBlue,x,2.71,.996);makePanel(.028,1.87,.028,steelGrey,x+.47,2.21,1.01,0,0,0,group);makePanel(.07,.29,.035,steelGrey,x+.29,2.03,1.015,0,0,0,group);}
+fixedDoor(-5.74);fixedDoor(5.96);
+const doorX=.0,doorZ=1.01;
+roundedPlate(1.38,2.08,.10,under,doorX,2.21,.971);
+roundedPlate(1.23,1.91,.06,mat(0x9ec0c5,.05,.7),doorX,2.22,.986);
+makePanel(1.35,.11,.13,steelGrey,doorX,1.17,1.04,0,0,0,group);
+// Visible inset vestibule: deeper than the door plane, with side walls, luminous ceiling and seats.
+const cabin=new THREE.Group();group.add(cabin);
+const insideDark=mat(0x303b47,.09,.72),insideWall=mat(0xd3dedf,.06,.54),seatMat=mat(0x365e82,.1,.6),handleMat=mat(0xc6d0d1,.68,.26);
+makePanel(1.2,1.96,.07,insideDark,doorX,2.21,doorZ-.13,0,0,0,cabin);
+makePanel(1.12,.12,.8,insideWall,doorX,3.18,.64,0,0,0,cabin);
+makePanel(1.1,.09,.8,steelGrey,doorX,1.24,.64,0,0,0,cabin);
+for(const side of [-1,1]){
+ makePanel(.10,1.86,.92,insideWall,doorX+side*.57,2.22,.59,0,0,0,cabin);
+ makePanel(.27,.78,.29,seatMat,doorX+side*.34,1.75,.58,0,0,0,cabin);
+ makePanel(.29,.14,.33,seatMat,doorX+side*.34,1.36,.61,0,0,0,cabin);
+ makePanel(.022,1.65,.025,handleMat,doorX+side*.47,2.38,.99,0,0,0,cabin);
+}
+const interiorLed=new THREE.PointLight(0xf7f5dd,.9,3.5);interiorLed.position.set(doorX,2.94,.82);cabin.add(interiorLed);
+makePanel(.68,.055,.035,new THREE.MeshBasicMaterial({color:0xfff4d0}),doorX,3.08,1.015,0,0,0,cabin);
+let dl=new THREE.Group(),dr=new THREE.Group();group.add(dl,dr);
+function doorLeaf(x,holder,sign){roundedPlate(.635,1.98,.045,doorMaterial,x,2.21,1.041,holder);roundedPlate(.47,.77,.045,rubber,x,2.72,1.053,holder);roundedPlate(.415,.72,.035,glassBlue,x,2.72,1.06,holder);makePanel(.023,1.92,.029,steelGrey,x+sign*.3,2.21,1.079,0,0,0,holder);makePanel(.055,.32,.032,steelGrey,x-sign*.17,2.08,1.08,0,0,0,holder);}
+doorLeaf(-.318,dl,-1);doorLeaf(.318,dr,1);
+// Light clusters, unit numbers and safety pictograms.
+for(const dir of [-1,1]){
+ const x=dir*9.94;
+ roundedPlate(.27,.16,.05,headlight,x,1.71,.957);
+ roundedPlate(.20,.09,.03,new THREE.MeshBasicMaterial({color:0xff4440}),x,1.47,.957);
+ let lamp=new THREE.PointLight(0xffe6ad,.62,2.5);lamp.position.set(x,1.78,1.25);group.add(lamp);
+}
+let numberCanvas=document.createElement('canvas');numberCanvas.width=320;numberCanvas.height=80;let ng=numberCanvas.getContext('2d');ng.fillStyle='#ffdaa9';ng.font='bold 44px sans-serif';ng.fillText('METRO  ·  008',12,53);let nt=new THREE.CanvasTexture(numberCanvas);nt.colorSpace=THREE.SRGBColorSpace;let labelFace=new THREE.Mesh(new THREE.PlaneGeometry(1.45,.36),new THREE.MeshBasicMaterial({map:nt,transparent:true}));labelFace.position.set(3.65,3.43,1.003);group.add(labelFace);
+// Detailed bogies and axles, including rubber tires, shiny hubs and suspension beams.
+for(const bx of [-6.4,6.4]){
+ makePanel(2.8,.37,1.2,chassis,bx,.94,0,0,0,0,group);
+ for(const dx of [-.79,.79]){
+  const x=bx+dx;
+  let wheel=new THREE.Mesh(new THREE.CylinderGeometry(.42,.42,.25,36),rubber);wheel.rotation.x=Math.PI/2;wheel.position.set(x,.77,.67);wheel.castShadow=true;group.add(wheel);
+  let hub=new THREE.Mesh(new THREE.CylinderGeometry(.21,.21,.27,24),steelGrey);hub.rotation.x=Math.PI/2;hub.position.set(x,.77,.825);group.add(hub);
+  let hubCenter=new THREE.Mesh(new THREE.CylinderGeometry(.08,.08,.29,24),under);hubCenter.rotation.x=Math.PI/2;hubCenter.position.set(x,.77,.84);group.add(hubCenter);
+  makePanel(.14,.25,.18,steelGrey,x,1.12,.65,0,0,0,group);
+ }
+}
+for(const x of [-3.4,3.4])makePanel(1.75,.15,1.36,roofTrim,x,4.055,0,0,0,0,group);
+// Air conditioning units and small roof details.
+for(const x of [-5.1,-1.65,1.65,5.1]){
+ makePanel(1.35,.18,.92,roofTrim,x,4.17,0,0,0,0,group);
+ for(let i=-2;i<=2;i++)makePanel(.045,.025,.78,steelGrey,x+i*.19,4.275,0,0,0,0,group);
+}
+// Recessed ventilation grilles, door indicators and translucent glass reflections.
+for(const px of [-8.25,-3.35,3.35,8.25]){
+ for(let i=0;i<5;i++)makePanel(.45,.018,.019,steelGrey,px,1.88+i*.075,.98,0,0,0,group);
+}
+for(const px of [-5.74,0,5.96]){
+ let indicator=new THREE.Mesh(new THREE.SphereGeometry(.048,10,8),new THREE.MeshBasicMaterial({color:0xffd85f}));indicator.position.set(px,3.34,1.07);group.add(indicator);
+}
+train={group,dl,dr}; group.position.set(0,0,0);
+function resize(){let rect=$('scene').getBoundingClientRect();renderer.setSize(rect.width,rect.height,false);camera.aspect=rect.width/rect.height;camera.updateProjectionMatrix()} new ResizeObserver(resize).observe($('scene')); resize(); requestAnimationFrame(frame)}catch(err){console.error(err);$('threeError').style.display='block'}}
+function setDoor(p){if(!train)return;train.dl.position.x=-.65*p;train.dr.position.x=.65*p}
+
+function ease(t){t=Math.max(0,Math.min(1,t));return t*t*(3-2*t)}
+function frame(now){requestAnimationFrame(frame);if(!renderer||!train)return;const delta=Math.min((now-prev)/1000,.05);prev=now;let elapsed=(now-phaseAt)/1000;let x=0,door=0;if(session&&!paused){if(phase==='roundBreak'){if(elapsed>=times.roundBreak)beginNextRound(now)}else if(phase==='arrive'){let p=ease(elapsed/times.arrive);x=17*(1-p);if(elapsed>=times.arrive)setPhase('open',now)}else if(phase==='open'){door=ease(elapsed/times.open);if(elapsed>=times.open)setPhase('study',now)}else if(phase==='study'){door=1;remaining=Math.max(0,duration-elapsed);let sec=Math.ceil(remaining);if(lastSecond!==sec){$('timeleft').textContent=sec+'s';$('memoryTime').textContent=sec+'s';$('memoryTrackFill').style.width=(remaining/duration*100)+'%';$('timecircle').style.setProperty('--percent',(remaining/duration*100)+'%');lastSecond=sec}if($('autoShow').checked&&remaining<=2&&!$('inlineAnswer').classList.contains('show'))showAnswer(false);if(elapsed>=duration)setPhase('close',now)}else if(phase==='close'){door=1-ease(elapsed/times.close);if(elapsed>=times.close)setPhase('depart',now)}else if(phase==='depart'){x=-18*ease(elapsed/times.depart);if(elapsed>=times.depart){idx++;displayCurrent(now)}}}else if(session&&paused){if(phase==='arrive')x=17*(1-ease((pausedAt-phaseAt)/1000/times.arrive));if(phase==='open')door=ease((pausedAt-phaseAt)/1000/times.open);if(phase==='study')door=1;if(phase==='close')door=1-ease((pausedAt-phaseAt)/1000/times.close);if(phase==='depart')x=-18*ease((pausedAt-phaseAt)/1000/times.depart)}
+train.group.position.x=x;train.group.position.y=Math.sin(now*.006)*.008;setDoor(door);
+const travel=session&&!paused&&(phase==='arrive'||phase==='depart');
+if(camera){let camX=7.0,camY=5.25,camZ=28.5,lookX=0,lookY=2.52;
+if(session){if(phase==='arrive'){let t=ease(Math.min(1,elapsed/times.arrive));camX=9.2-2.2*t;camY=5.45-.20*t;camZ=30.2-1.7*t}
+else if(phase==='open'){let t=ease(Math.min(1,elapsed/times.open));camX=7-1.5*t;camZ=28.5-1.3*t}
+else if(phase==='study'){camX=5.5;camZ=27.2}
+else if(phase==='close'){camX=5.5;camZ=27.2}
+else if(phase==='depart'){let t=ease(Math.min(1,elapsed/times.depart));camX=5.5+2*t;camZ=27.2+1.5*t}}
+let k=Math.min(1,delta*2.4);camera.position.x+=(camX-camera.position.x)*k;camera.position.y+=(camY-camera.position.y)*k;camera.position.z+=(camZ-camera.position.z)*k;camera.lookAt(lookX,lookY,0)}
+if(railOsc&&railFilter&&audioCtx){railOsc.frequency.setTargetAtTime(travel?62+Math.min(65,Math.abs(x)*2):36,audioCtx.currentTime,.2);railFilter.frequency.setTargetAtTime(travel?160:65,audioCtx.currentTime,.2)}
+renderer.render(scene,camera)}
+
+// Full-screen station view. iOS Safari/iPhone Chrome may not offer element fullscreen;
+// in that case use a fixed full-viewport learning panel instead.
+const stageEl=$('studyStage'), fullBtn=$('fullscreenToggle');
+let fallbackFullscreen=false;
+function nativeFullscreen(){return document.fullscreenElement===stageEl||document.webkitFullscreenElement===stageEl}
+function syncFullscreenButton(){
+ const active=nativeFullscreen()||fallbackFullscreen;
+ fullBtn.textContent=active?'⤢ Thu nhỏ':'⛶ Toàn màn hình';
+ fullBtn.setAttribute('aria-pressed',String(active));
+ fullBtn.setAttribute('aria-label',active?'Thoát toàn màn hình':'Bật chế độ toàn màn hình');
+ fullBtn.title=active?'Thoát chế độ toàn màn hình':'Xem ga tàu toàn màn hình';
+ document.body.classList.toggle('fullscreenNoScroll',fallbackFullscreen);
+}
+function toggleFallback(on){fallbackFullscreen=on;stageEl.classList.toggle('fullscreenFallback',on);syncFullscreenButton()}
+fullBtn.addEventListener('click',async()=>{
+ if(fallbackFullscreen){toggleFallback(false);return}
+ if(nativeFullscreen()){
+  try{if(document.exitFullscreen)await document.exitFullscreen();else if(document.webkitExitFullscreen)document.webkitExitFullscreen()}catch(e){console.warn('Fullscreen exit:',e)}
+  syncFullscreenButton();return;
+ }
+ try{
+  if(stageEl.requestFullscreen)await stageEl.requestFullscreen();
+  else if(stageEl.webkitRequestFullscreen)await stageEl.webkitRequestFullscreen();
+  else toggleFallback(true);
+ }catch(e){toggleFallback(true)}
+ syncFullscreenButton();
+});
+document.addEventListener('fullscreenchange',syncFullscreenButton);
+document.addEventListener('webkitfullscreenchange',syncFullscreenButton);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&fallbackFullscreen)toggleFallback(false)});
+
+
+ // Local PWA storage: records, checked items, and learning preferences.
+ const STUDY_STORAGE_KEY='memory_metro_study_v1';
+ function saveStudyData(){ window.TrainSync?.changed(); }
+ function restoreStudyData(){
+  try{
+   const raw=localStorage.getItem(STUDY_STORAGE_KEY);
+   if(!raw){$('demoBtn').click();return}
+   const state=JSON.parse(raw);
+   if(!Array.isArray(state.records)){ $('demoBtn').click();return }
+   data=state.records.filter(x=>x&&typeof x.info==='string').map((x,i)=>({id:i+1,info:x.info,content:String(x.content??''),note:String(x.note??'')}));
+   selected=new Set((state.selected||[]).filter(id=>Number.isInteger(id)&&id>=1&&id<=data.length));
+   $('fileName').textContent=String(state.fileName||'Đã lưu trên thiết bị');
+   if([...$('seconds').options].some(o=>o.value===String(state.seconds)))$('seconds').value=String(state.seconds);
+   if(['random','sequential'].includes(state.order))$('order').value=state.order;
+   $('autoShow').checked=!!state.autoShow;
+   if(typeof state.keepAwake==='boolean')keepAwake=state.keepAwake;
+   if(typeof state.soundOn==='boolean')soundOn=state.soundOn;
+   $('soundToggle').textContent=soundOn?'🔊 Âm thanh: Bật':'🔇 Âm thanh: Tắt';
+   $('soundToggle').setAttribute('aria-pressed',String(soundOn));
+   $('timeleft').textContent=$('seconds').value+'s';renderList();
+  }catch(err){console.warn('Không khôi phục được dữ liệu',err);$('demoBtn').click()}
+ }
+ for(const id of ['seconds','order','autoShow'])$(id).addEventListener('change',saveStudyData);
+ $('wakeToggle').addEventListener('click',saveStudyData);
+ $('soundToggle').addEventListener('click',saveStudyData);
+ window.addEventListener('pagehide',saveStudyData);
+
+  window.TrainBridge={
+    snapshot:()=>({version:1,records:data.map(x=>({...x})),selectedIds:[...selected],fileName:$('fileName').textContent||'',settings:{seconds:$('seconds').value,order:$('order').value,autoShow:$('autoShow').checked,soundOn,keepAwake}}),
+    apply:v=>{stopSession();const rows=Array.isArray(v?.records)?v.records:[];
+      data=rows.map((x,i)=>({id:Number.isSafeInteger(Number(x.id))?Number(x.id):i+1,info:String(x.info??''),content:String(x.content??''),note:String(x.note??'')}));
+      selected=new Set((Array.isArray(v?.selectedIds)?v.selectedIds:data.map(x=>x.id)).map(Number));
+      $('fileName').textContent=String(v?.fileName||'');$('search').value='';let s=v?.settings||{};
+      if([...$('seconds').options].some(o=>o.value===String(s.seconds)))$('seconds').value=String(s.seconds);
+      if(['random','sequential'].includes(s.order))$('order').value=s.order;
+      $('autoShow').checked=!!s.autoShow;
+      if(typeof s.soundOn==='boolean')soundOn=s.soundOn;
+      if(typeof s.keepAwake==='boolean')keepAwake=s.keepAwake;
+      $('soundToggle').textContent=soundOn?'🔊 Âm thanh: Bật':'🔇 Âm thanh: Tắt';
+      $('soundToggle').setAttribute('aria-pressed',String(soundOn));updateWakeUI();
+      $('timeleft').textContent=$('seconds').value+'s';renderList();},
+    empty:()=>({version:1,records:[],selectedIds:[],fileName:'',settings:{seconds:'10',order:'random',autoShow:false,soundOn:true,keepAwake:true}})
+  };
+  updateWakeUI();init3D();
+
+})();
+</script>
+<script>
+if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+  window.addEventListener('load', async () => {
+    try {
+      const reg = await navigator.serviceWorker.register('./sw.js', {scope:'./'});
+      let prompted = false;
+      const offerUpdate = () => {
+        if (!reg.waiting || !navigator.serviceWorker.controller || prompted) return;
+        prompted = true;
+        if (confirm('Có phiên bản mới của Tàu điện thông tin. Cập nhật ngay?')) reg.waiting.postMessage({type:'SKIP_WAITING'});
+      };
+      if (reg.waiting) offerUpdate();
+      reg.addEventListener('updatefound', () => {
+        const worker=reg.installing;
+        if (worker) worker.addEventListener('statechange',()=>{if(worker.state==='installed')offerUpdate()});
+      });
+      let refreshing=false;
+      navigator.serviceWorker.addEventListener('controllerchange',()=>{if(!refreshing){refreshing=true;location.reload()}});
+    } catch(e) { console.warn('Không đăng ký được PWA',e); }
+  });
+}
+</script>
+
+
+<button id="trainAccountButton" type="button" hidden>☁ Tài khoản & Sao lưu</button>
+<div id="trainAuthGate"><div class="trainAuthCard"><h2>🚆 Tàu điện thông tin</h2><p>Đăng nhập để lưu và đồng bộ các bài học giữa điện thoại, máy tính. Mỗi tab có phiên đăng nhập độc lập.</p><p id="trainGateStatus" class="trainStatusLine">Đang kiểm tra phiên đăng nhập...</p><div id="trainGateFields"><label>Email<input id="trainLoginEmail" type="email" autocomplete="email" placeholder="email@example.com"></label><label>Mật khẩu<input id="trainLoginPassword" type="password" autocomplete="current-password" placeholder="Mật khẩu"></label><div class="trainAccountActions"><button id="trainLogin" type="button">Đăng nhập</button><button id="trainRegister" type="button">Đăng ký tự do</button><button id="trainForgot" type="button">Quên mật khẩu</button></div></div><div id="trainRecovery" hidden><label>Mật khẩu mới<input type="password" id="trainRecoverPassword" autocomplete="new-password"></label><div class="trainAccountActions"><button id="trainRecoverConfirm" type="button">Đặt lại mật khẩu</button></div></div></div></div>
+<div id="trainAccountDialog" hidden><div class="trainAuthCard"><h2>☁ Tài khoản & Sao lưu</h2><p id="trainAccountIdentity"></p><p class="trainStatusLine" id="trainSyncStatus"></p><p class="trainSmall" id="trainLastSync"></p><div class="trainAccountActions"><button id="trainSyncNow" type="button">Đồng bộ ngay</button><button id="trainDownload" type="button">Xuất JSON</button><button id="trainUpload" type="button">Nhập JSON</button><button id="trainMigrate" type="button">Chuyển dữ liệu cũ</button></div><input id="trainImportFile" type="file" accept="application/json,.json" hidden><div class="trainAccountSection"><h3>Đổi mật khẩu</h3><label>Mật khẩu hiện tại<input type="password" id="trainOldPassword" autocomplete="current-password"></label><label>Mật khẩu mới<input type="password" id="trainNewPassword" autocomplete="new-password"></label><label>Xác nhận mật khẩu mới<input type="password" id="trainConfirmPassword" autocomplete="new-password"></label><div class="trainAccountActions"><button id="trainChangePassword" type="button">Đổi mật khẩu</button></div></div><p class="trainSmall">Bản ngoại tuyến lưu trên thiết bị theo từng tài khoản. Không đồng bộ trạng thái chuyến tàu đang chạy; khi đổi máy, bạn bắt đầu một chuyến học mới.</p><p class="trainStatusLine" id="trainAccountMessage"></p><div class="trainAccountActions"><button id="trainLogout" type="button">Đăng xuất tab này</button><button id="trainAccountClose" type="button">Đóng</button></div></div></div>
+<div id="trainConflict" hidden><div class="trainAuthCard"><h2>⚠ Xung đột dữ liệu</h2><p>Bản dữ liệu trên thiết bị và Supabase đã được sửa khác nhau. Ứng dụng đã giữ nguyên cả hai bản; hãy chọn cách xử lý.</p><p id="trainConflictDesc" class="trainSmall"></p><div class="trainAccountActions"><button id="trainConflictLocal" type="button">Giữ bản máy này</button><button id="trainConflictRemote" type="button">Dùng bản Supabase</button><button id="trainConflictBackup" type="button">Sao lưu bản máy này</button><button id="trainConflictCancel" type="button">Để sau</button></div></div></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+/* Memory Metro / Supabase sync. Data stored per APP_ID and per user. */
+(()=>{'use strict';
+const APP_ID='memory_metro_train', SUPABASE_URL='https://uzpiszoukrbylktpdwql.supabase.co', KEY='sb_publishable_aP5YlZsHQBB5KLGSCgsZTw_9dZZsoLb';
+const $=id=>document.getElementById(id);
+const gate=$('trainAuthGate'), dialogue=$('trainAccountDialog'), clash=$('trainConflict');
+let client=null, user=null, generation=0, rev=0, dirty=false, processing=false, conflict=null, timer=null, lastSync=null, suspended=true, startup=true, recovery=false;
+let lastSaved='';
+const storeKey=id=>`ecosystem:${APP_ID}:${id}:snapshot`;
+const metaKey=id=>`ecosystem:${APP_ID}:${id}:metadata`;
+const stringify=v=>JSON.stringify(v);
+const msg=(str,error=false)=>{ $('trainGateStatus').textContent=str;$('trainGateStatus').classList.toggle('trainDanger',error);$('trainAccountMessage').textContent=str;};
+const status=s=>{$('trainSyncStatus').textContent=s; $('trainAccountButton').title=s;};
+function valid(v){return v&&typeof v==='object'&&!Array.isArray(v)&&Array.isArray(v.records)&&Array.isArray(v.selectedIds)&&v.records.every(x=>x&&typeof x.info==='string'&&typeof x.content==='string'&&typeof x.note==='string')&&v.records.length<=50000;}
+function readLocal(id){try{const d=JSON.parse(localStorage.getItem(storeKey(id))||'null');return valid(d)?d:null}catch{return null}}
+function readMeta(id){try{return JSON.parse(localStorage.getItem(metaKey(id))||'{}')}catch{return {}}}
+function writeLocal(){if(!user)return;try{const current=window.TrainBridge.snapshot();localStorage.setItem(storeKey(user.id),stringify(current));localStorage.setItem(metaKey(user.id),stringify({revision:rev,dirty,lastSync}));lastSaved=stringify(current)}catch(e){status('⚠ Không lưu được trên máy: '+e.message)}}
+function setSnapshot(v){suspended=true;try{window.TrainBridge.apply(v);lastSaved=stringify(v)}finally{suspended=false}}
+function scope(gen,id){return gen===generation&&user?.id===id}
+function download(v,name){const blob=new Blob([JSON.stringify(v,null,2)],{type:'application/json'}),link=document.createElement('a'),href=globalThis.URL.createObjectURL(blob);link.href=href;link.download=name;link.click();setTimeout(()=>globalThis.URL.revokeObjectURL(href),1200)}
+function exportCurrent(){if(!user)return;download({appId:APP_ID,exportedAt:new Date().toISOString(),data:window.TrainBridge.snapshot()},`memory-metro-${new Date().toISOString().slice(0,10)}.json`)}
+function bridgeChanged(){if(!user||suspended||startup||conflict)return;const now=stringify(window.TrainBridge.snapshot());if(now===lastSaved)return;dirty=true;writeLocal();status('● Đã lưu trên máy · Chưa đồng bộ');schedule()}
+window.TrainSync={changed:bridgeChanged};
+function schedule(delay=900){clearTimeout(timer);timer=setTimeout(()=>{if(user&&!conflict&&!processing&&navigator.onLine)sync('auto')},delay)}
+async function remoteRead(gen,id){const {data,error}=await client.from('ecosystem_app_data').select('data,revision,updated_at').eq('user_id',id).eq('app_id',APP_ID).maybeSingle();if(!scope(gen,id))return null;if(error)throw error;return data||null}
+function markConflict(remote,reason){conflict={remote,reason};status('⚠ Xung đột · Chưa ghi đè');$('trainConflictDesc').textContent=reason;clash.hidden=false}
+async function beginUser(session){generation++;const gen=generation;clearTimeout(timer);conflict=null;clash.hidden=true;user=session?.user||null;rev=0;dirty=false;lastSync=null;suspended=true;startup=true;
+if(!user){setSnapshot(window.TrainBridge.empty());suspended=true;gate.hidden=false;$('trainAccountButton').hidden=true;dialogue.hidden=true;msg(client?'Vui lòng đăng nhập để tiếp tục.':'Không tải được thư viện Supabase. Kiểm tra kết nối Internet.',!client);status('Chưa đăng nhập');startup=false;return}
+const id=user.id;const local=readLocal(id),meta=readMeta(id);rev=Number(meta.revision)||0;dirty=!!meta.dirty;lastSync=meta.lastSync||null;
+$('trainAccountIdentity').textContent=user.email||'Tài khoản đã xác thực';$('trainAccountButton').hidden=false;gate.hidden=true;msg('Đã xác thực tài khoản.');$('trainLastSync').textContent=lastSync?'Đồng bộ gần nhất: '+new Date(lastSync).toLocaleString('vi-VN'):'';
+if(local){setSnapshot(local)}else{setSnapshot(window.TrainBridge.empty())}
+startup=false;status(navigator.onLine?'Đang kiểm tra dữ liệu trên Supabase...':'Ngoại tuyến · Dữ liệu chỉ lưu trên máy');
+if(!navigator.onLine){suspended=false;return}
+try{const remote=await remoteRead(gen,id);if(!scope(gen,id))return;
+ if(!remote){rev=0;if(local){dirty=true;writeLocal();schedule(200)}else{dirty=false;suspended=false;status('Chưa có dữ liệu trên Supabase');}}
+ else{const r=remote.data;const rr=Number(remote.revision)||0;
+  if(!valid(r))throw Error('Dữ liệu Supabase không đúng cấu trúc ứng dụng.');
+  if(!local){rev=rr;dirty=false;setSnapshot(r);writeLocal();status('✓ Đã tải dữ liệu từ Supabase')}
+  else if(stringify(local)===stringify(r)){rev=rr;dirty=false;writeLocal();status('✓ Dữ liệu khớp Supabase')}
+  else if(dirty){markConflict(remote,'Thiết bị có dữ liệu chưa đồng bộ, trong khi máy chủ đã có bản khác.');}
+  else{rev=rr;dirty=false;setSnapshot(r);writeLocal();status('✓ Đã tải bản mới từ Supabase')}
+ }
+}catch(e){if(scope(gen,id)){suspended=false;status('⚠ Không thể tải Supabase · Có thể học với bản cục bộ: '+e.message)}}finally{if(scope(gen,id))suspended=false}
+}
+async function sync(source='manual'){
+if(!user||processing||conflict||!navigator.onLine)return;
+const gen=generation,id=user.id;processing=true;status('↻ Đang đồng bộ...');
+try{
+ const remote=await remoteRead(gen,id);if(!scope(gen,id))return;
+ const rrev=Number(remote?.revision)||0;
+ if(!dirty){if(!remote){status('Chưa có bản dữ liệu máy chủ');return}
+  if(!valid(remote.data))throw Error('Bản dữ liệu máy chủ không hợp lệ');
+  const current=window.TrainBridge.snapshot();
+  if(stringify(current)!==stringify(remote.data)){rev=rrev;setSnapshot(remote.data);writeLocal()}
+  else{rev=rrev;writeLocal()}
+  status('✓ Đã cập nhật từ Supabase');return;
+ }
+ if(rrev!==rev){if(remote&&valid(remote.data)&&stringify(remote.data)===stringify(window.TrainBridge.snapshot())){rev=rrev;dirty=false;writeLocal();status('✓ Đã đồng bộ');return}markConflict(remote,'Máy chủ đã có revision '+rrev+', nhưng thiết bị đang dựa vào revision '+rev+'.');return}
+ const snapshot=window.TrainBridge.snapshot();
+ const {data:answer,error}=await client.rpc('ecosystem_save_cas',{p_app_id:APP_ID,p_expected_revision:rev,p_data:snapshot});
+ if(!scope(gen,id))return;if(error)throw error;
+ if(!answer?.ok){const latest=await remoteRead(gen,id);if(scope(gen,id))markConflict(latest,'Máy chủ đã được sửa trong lúc gửi dữ liệu (CAS thất bại).');return}
+ rev=Number(answer.revision);const changedDuring=stringify(window.TrainBridge.snapshot())!==stringify(snapshot);
+ dirty=changedDuring;lastSync=new Date().toISOString();writeLocal();$('trainLastSync').textContent='Đồng bộ gần nhất: '+new Date(lastSync).toLocaleString('vi-VN');status(dirty?'● Đã lưu bản mới trên máy · Đang gửi tiếp':'✓ Đã đồng bộ với Supabase');if(dirty)schedule(350);
+}catch(e){if(scope(gen,id))status('⚠ Đồng bộ lỗi · Dữ liệu giữ trên máy: '+e.message)}finally{processing=false}}
+async function solve(which){if(!user||!conflict)return;const gen=generation,id=user.id;const local=window.TrainBridge.snapshot();const remote=conflict.remote;if(which==='remote'){
+ if(!remote){if(!confirm('Supabase chưa có dữ liệu. Xóa bản đang hiển thị và dùng dữ liệu trống?'))return;setSnapshot(window.TrainBridge.empty());rev=0}
+ else{if(!valid(remote.data)){msg('Bản Supabase không hợp lệ',true);return}setSnapshot(remote.data);rev=Number(remote.revision)||0}
+ dirty=false;conflict=null;clash.hidden=true;writeLocal();status('✓ Đã dùng bản Supabase');return;
+}
+if(which==='local'){
+ if(!confirm('Ghi bản đang ở thiết bị lên Supabase? Bản đang lưu trên máy chủ sẽ được thay thế. Hãy sao lưu trước nếu cần.'))return;
+ const latest=await remoteRead(gen,id).catch(e=>{msg(e.message,true);return undefined});if(!scope(gen,id)||latest===undefined)return;
+ const expected=Number(latest?.revision)||0;
+ const {data:answer,error}=await client.rpc('ecosystem_save_cas',{p_app_id:APP_ID,p_expected_revision:expected,p_data:local});
+ if(!scope(gen,id))return;if(error){msg('Không ghi được: '+error.message,true);return}
+ if(!answer?.ok){markConflict(await remoteRead(gen,id),'Dữ liệu lại thay đổi; cần xử lý xung đột lần nữa.');return}
+ rev=Number(answer.revision);dirty=false;lastSync=new Date().toISOString();conflict=null;clash.hidden=true;writeLocal();status('✓ Đã ghi bản thiết bị lên Supabase');
+}}
+async function migrate(){
+ if(!user)return;
+ // This is the original app's real localStorage key. Never delete or overwrite it.
+ const old=localStorage.getItem('memory_metro_study_v1');
+ if(!old){msg('Không tìm thấy dữ liệu cũ trên trình duyệt này. Nếu dữ liệu ở thiết bị khác, hãy xuất JSON từ thiết bị đó hoặc nhập lại Excel/CSV.');return;}
+ let parsed,converted;
+ try{
+  parsed=JSON.parse(old);
+  if(!Array.isArray(parsed.records))throw Error('Bản cũ không có danh sách records');
+  const records=parsed.records.map((x,i)=>({id:Number.isSafeInteger(Number(x.id))?Number(x.id):i+1,info:String(x.info??''),content:String(x.content??''),note:String(x.note??'')}));
+  converted={version:1,records,selectedIds:Array.isArray(parsed.selected)?parsed.selected.map(Number):records.map(x=>x.id),fileName:String(parsed.fileName||''),settings:{seconds:String(parsed.seconds||10),order:parsed.order==='sequential'?'sequential':'random',autoShow:!!parsed.autoShow,soundOn:parsed.soundOn!==false,keepAwake:parsed.keepAwake!==false}};
+  if(!valid(converted))throw Error('Dữ liệu cũ không hợp lệ');
+ }catch(e){msg('Không đọc được dữ liệu cũ: '+e.message,true);return}
+ download({originKey:'memory_metro_study_v1',legacy:parsed,converted},'memory-metro-du-lieu-cu-backup.json');
+ if(!confirm(`Đã tạo bản tải xuống sao lưu. Chuyển ${converted.records.length} dòng từ bộ nhớ trình duyệt cũ sang tài khoản đang đăng nhập? Dữ liệu cũ sẽ không bị xóa.`))return;
+ const gen=generation,id=user.id;let remote;
+ try{remote=await remoteRead(gen,id)}catch(e){msg('Không thể kiểm tra bản trên Supabase: '+e.message,true);return}
+ if(!scope(gen,id))return;
+ setSnapshot(converted);rev=Number(remote?.revision)||0;dirty=true;writeLocal();
+ if(remote)markConflict(remote,'Bạn đã chuyển dữ liệu cũ; Supabase có dữ liệu khác. Hãy chọn bản cần giữ.');else{status('Đã nhập dữ liệu cũ, đang đồng bộ...');schedule(150)}
+}
+function bind(){
+$('trainAccountButton').onclick=()=>{dialogue.hidden=false};$('trainAccountClose').onclick=()=>dialogue.hidden=true;
+$('trainLogin').onclick=async()=>{if(!client)return msg('Thư viện Supabase chưa tải xong.',true);const email=$('trainLoginEmail').value.trim(),password=$('trainLoginPassword').value;if(!email||!password)return msg('Nhập email và mật khẩu.',true);msg('Đang đăng nhập...');try{const {data,error}=await client.auth.signInWithPassword({email,password});if(error)return msg('Đăng nhập thất bại: '+error.message,true);if(!data?.session)return msg('Supabase không trả về phiên đăng nhập. Kiểm tra email đã xác nhận.',true);await beginUser(data.session)}catch(e){msg('Không kết nối được máy chủ đăng nhập: '+e.message,true)}};
+$('trainRegister').onclick=async()=>{if(!client)return msg('Chưa kết nối Supabase.',true);const email=$('trainLoginEmail').value.trim(),password=$('trainLoginPassword').value;if(!email||password.length<6)return msg('Nhập email hợp lệ và mật khẩu ít nhất 6 ký tự (hoặc theo chính sách Project).',true);msg('Đang đăng ký...');try{const {data,error}=await client.auth.signUp({email,password,options:{emailRedirectTo:location.href.split('#')[0]}});if(error)return msg('Đăng ký thất bại: '+error.message,true);if(data?.session)await beginUser(data.session);else msg('Đã gửi yêu cầu đăng ký. Nếu Project yêu cầu xác nhận email, hãy kiểm tra hộp thư và thư rác rồi đăng nhập.')}catch(e){msg('Không kết nối được máy chủ đăng ký: '+e.message,true)}};
+$('trainForgot').onclick=async()=>{if(!client)return msg('Chưa kết nối Supabase.',true);const email=$('trainLoginEmail').value.trim();if(!email)return msg('Nhập email để nhận liên kết khôi phục.',true);const {error}=await client.auth.resetPasswordForEmail(email,{redirectTo:location.href.split('#')[0]});msg(error?'Không thể gửi yêu cầu: '+error.message:'Nếu địa chỉ hợp lệ, bạn sẽ nhận được email khôi phục.',!!error)};
+$('trainRecoverConfirm').onclick=async()=>{if(!recovery)return msg('Phiên khôi phục không hợp lệ.',true);const pw=$('trainRecoverPassword').value;if(pw.length<6)return msg('Mật khẩu mới quá ngắn.',true);const {error}=await client.auth.updateUser({password:pw});if(error)return msg('Lỗi đổi mật khẩu: '+error.message,true);recovery=false;$('trainRecovery').hidden=true;msg('Mật khẩu đã thay đổi.');const {data}=await client.auth.getSession();await beginUser(data.session)};
+$('trainLogout').onclick=async()=>{if(dirty&&!confirm('Dữ liệu trên máy chưa đồng bộ, nhưng sẽ được giữ riêng cho tài khoản này. Vẫn đăng xuất?'))return;generation++;clearTimeout(timer);const {error}=await client.auth.signOut({scope:'local'});if(error){msg('Lỗi đăng xuất: '+error.message,true);return}await beginUser(null)};
+$('trainSyncNow').onclick=()=>{if(conflict){clash.hidden=false;return}sync()};$('trainDownload').onclick=exportCurrent;$('trainMigrate').onclick=migrate;
+$('trainUpload').onclick=()=>$('trainImportFile').click();$('trainImportFile').onchange=async e=>{const f=e.target.files?.[0];e.target.value='';if(!f)return;if(f.size>12*1024*1024)return msg('File JSON quá lớn (giới hạn 12 MB).',true);try{const v=JSON.parse(await f.text()),newData=v.data||v;if(!valid(newData))throw Error('Không đúng cấu trúc bài học');if(!confirm(`Nhập ${newData.records.length} thông tin và thay thế bản trên thiết bị? Hãy xuất bản sao lưu trước.`))return;const remote=await remoteRead(generation,user.id);setSnapshot(newData);dirty=true;writeLocal();if(remote){markConflict(remote,'Bạn vừa nhập JSON, tài khoản đã có dữ liệu từ trước. Chọn cách giải quyết.')}else schedule(150)}catch(err){msg('Lỗi nhập JSON: '+err.message,true)}};
+$('trainChangePassword').onclick=async()=>{const old=$('trainOldPassword').value,n=$('trainNewPassword').value,c=$('trainConfirmPassword').value;if(!old||n.length<6||n!==c||old===n)return msg('Kiểm tra mật khẩu hiện tại, mật khẩu mới (ít nhất 6 ký tự, khác mật khẩu cũ) và xác nhận.',true);
+ const {error}=await client.auth.updateUser({password:n,current_password:old});if(error)return msg('Không thể đổi mật khẩu: '+error.message,true);['trainOldPassword','trainNewPassword','trainConfirmPassword'].forEach(id=>$(id).value='');msg('Supabase đã xác nhận đổi mật khẩu thành công.')};
+$('trainConflictLocal').onclick=()=>solve('local');$('trainConflictRemote').onclick=()=>solve('remote');$('trainConflictBackup').onclick=exportCurrent;$('trainConflictCancel').onclick=()=>{clash.hidden=true;status('⚠ Còn xung đột, chưa đồng bộ')};
+window.addEventListener('online',()=>{if(user){status('Đã có mạng · Đang thử đồng bộ...');schedule(250)}});
+window.addEventListener('offline',()=>{if(user)status('● Ngoại tuyến · Dữ liệu được lưu trên máy')});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&user&&!conflict)schedule(350)});
+setInterval(()=>{if(user&&navigator.onLine&&!processing&&!conflict)sync('poll')},30000);
+}
+async function init(){bind();if(!window.TrainBridge){msg('Không tìm thấy bộ dữ liệu tàu điện.',true);return}if(!window.supabase?.createClient){msg('Không tải được thư viện Supabase JS. Kiểm tra kết nối Internet hoặc tắt trình chặn tập lệnh.',true);return}
+ try{client=window.supabase.createClient(SUPABASE_URL,KEY,{auth:{storage:sessionStorage,storageKey:'sb-memory-metro-'+APP_ID,autoRefreshToken:true,persistSession:true,detectSessionInUrl:true,flowType:'implicit'}});
+ client.auth.onAuthStateChange((event,session)=>{if(event==='PASSWORD_RECOVERY'){recovery=true;$('trainRecovery').hidden=false;$('trainGateFields').hidden=true;gate.hidden=false;msg('Nhập mật khẩu mới để hoàn tất khôi phục.')}else if(event==='SIGNED_OUT'&&user){beginUser(null)}else if(event==='TOKEN_REFRESHED'&&!session&&user){beginUser(null)}});
+ const {data,error}=await client.auth.getSession();if(error)throw error;await beginUser(data.session);if(recovery){$('trainRecovery').hidden=false;$('trainGateFields').hidden=true;gate.hidden=false;msg('Nhập mật khẩu mới để hoàn tất khôi phục.');}
+ }catch(e){msg('Không kiểm tra được phiên: '+e.message,true);status('⚠ Lỗi Supabase')}}
+init();
+})();
+
+</script>
+</body></html>
